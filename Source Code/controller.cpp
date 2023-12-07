@@ -3,9 +3,6 @@
 
 using std::string;
 
-
-
-
 string Table(string request) {
 	//						   arg1   :  arg2 :  arg3(param1,param2,...)
 	// normalized request : wich_table:command:parameters
