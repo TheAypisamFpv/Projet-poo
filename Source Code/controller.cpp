@@ -1,7 +1,8 @@
 #include "link/link.h"
-#include "string.h"
+#include <string.h>
+#include <iostream>
 
-using std::string;
+using namespace std;
 
 string Table(string request) {
 	//						   arg1   :  arg2 :  arg3(param1,param2,...)
@@ -10,7 +11,7 @@ string Table(string request) {
 	string data;
 
 	//check request by checking if there is 2 ':'
-	argument_number = count(request.begin(), request.end(), ':');
+	int argument_number = count(request.begin(), request.end(), ':');
 	if (argument_number > 2) {
 		return "error:invalid_argument:too_many_arguments";
 	}
@@ -52,7 +53,7 @@ string Stats(string request) {
 	string data;
 
 	//check request by checking if there is 1 ':'
-	argument_number = count(request.begin(), request.end(), ':');
+	int argument_number = count(request.begin(), request.end(), ':');
 	if (argument_number > 1) {
 		return "error:invalid_argument:too_many_arguments";
 	}
@@ -64,5 +65,5 @@ string Stats(string request) {
 
 
 
-	return data
+	return data;
 }
