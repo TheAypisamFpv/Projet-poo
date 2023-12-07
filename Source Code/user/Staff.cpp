@@ -1,4 +1,7 @@
 #include "Staff.h"
+#include"controller.cpp"
+#include <string>
+using namespace std;
 
 Staff::Staff() :User() {
 	//Initialisation specifique a Staff
@@ -10,18 +13,36 @@ Staff::~Staff() {
 	//implementation du destructeur de staff
 }
 
-std::string Staff::get_info() const
+
+
+Staff Staff::get_superior(string request) const
 {
-	//implementation specifique a staff de get_info
-	return "Staff information";
+	request = "staff:getSuperior:" + request;
+	return Table(request);
+	
 }
 
-Staff Staff::get_superior() const
+string Staff::create(string request)
 {
-	
-	//implementation de get_superior
-	Staff superior;
-	//logique pou recuperer le superieur
-	return superior;
+	request = "staff:create:" + request;
+	return Table(request);
+}
+
+string Staff::delete_(string request)
+{
+	request = "staff:delete:" + request;
+	return Table(request);
+}
+
+string Staff::modify(string request)
+{
+	request = "staff:modify:" + request;
+	return Table(request);
+}
+
+string Staff::show(string request)
+{
+	request = "staff:show:" + request;
+	return Table(request);
 }
 

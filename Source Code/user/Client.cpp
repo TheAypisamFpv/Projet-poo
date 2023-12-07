@@ -15,40 +15,52 @@ Client::~Client()
 	//implemenattion du dest..
 }
 
-string Client::get_info() const
+
+
+string Client::get_account_data(string request) const
 {
-	//implementation specifique a get_info() du client
-	return "Les informations du client";
+	request = "client:get_account_data:" + request;
+	return Table(request);
 }
 
-string Client::get_account_data() const
+string Client::get_bill(string request) const
 {
-	//implementation
-	return "Account data for client";
+	request = "client:get_bill:" + request;
+	return Table(request);
 }
 
-string Client::get_bill(int bill_id) const
+string Client::get_bills(string request) const
 {
-	//implementation
-	return "Bill information for client";
+	request = "client:get_bills:" + request;
+	return Table(request);
 }
 
-string Client::get_bills(int order_id) const
+string Client::get_order_details(string request) const
 {
-	//implementation
-	return "List of bills for client";
-}
-
-string Client::get_order_details(int order_id) const
-{
-	//implementation
-	return "Order details for client";
+	request = "client:get_order_details:" + request;
+	return Table(request);
 }
 
 string Client::delete_(string request)
 {
 	request = "client:delete:" + request;
-	return table(request);
+	return Table(request);
 }
 
 string Client::create(string request)
+{
+	request = "client:create:" + request;
+	return Table(request);
+}
+
+string Client::modify(string request)
+{
+	request = "client:modify:" + request;
+	return Table(request);
+}
+
+string Client::show(string request)
+{
+	request = "client:show:" + request;
+	return Table(request);
+}

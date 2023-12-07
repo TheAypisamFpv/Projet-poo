@@ -1,4 +1,5 @@
 #include "Order.h"
+#include "controller.cpp"
 
 Order::Order():User()
 {
@@ -12,8 +13,31 @@ Order::~Order()
 	//implementation
 }
 
-std::string Order::get_info() const
+
+
+std::string Order::create(string request)
 {
-	//implementation specifique a Order de get_info
-	return "Order information";
+	request = "order:create:" + request;
+	return Table(request);
 }
+
+std::string Order::delete_(string request)
+{
+	request = "order:delete:" + request;
+	return Table(request);
+
+}
+
+std::string Order::modify(string request)
+{
+	request = "order:modify:" + request;
+	return Table(request);
+
+}
+
+string Order::show(string request)
+{
+	request = "order:show:" + request;
+	return Table(request);
+}
+

@@ -7,7 +7,7 @@ private:
 public:
 	Order();
 	~Order() override;
-	std::string get_info() const override;
+	
 	//methodes specifiques a Order
 
  };

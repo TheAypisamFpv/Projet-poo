@@ -1,6 +1,8 @@
 #pragma once
 
 #include "User.h"
+#include <string>
+using namespace std;
 
 
 
@@ -20,13 +22,13 @@ public:
 
     ~Stock() override;
 
-    std::string get_info() const override;
+    
 
-    float calculate(int parameter) const;
+    string calculate(int request) const;
 
-    int identify(int parameter) const;
+    string identify(string request) const;
 
-    int simulate(int parameter) const;
+    string simulate(string request) const;
 
 };
 

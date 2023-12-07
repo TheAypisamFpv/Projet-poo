@@ -15,10 +15,10 @@ private:
 public:
 	Client();
 	~Client() override;
-	std::string get_info() const override;
-	std::string get_account_data() const;
-	std::string get_bill(int bill_id) const;
-	std::string get_bills(int order_id) const; //facture
-	std::string get_order_details(int order_id) const;
+	
+	std::string get_account_data(string request) const;
+	std::string get_bill(string request) const;
+	std::string get_bills(string request) const; //facture
+	std::string get_order_details(string request) const;
 
  };

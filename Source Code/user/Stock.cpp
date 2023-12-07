@@ -1,7 +1,9 @@
 
 
 #include "Stock.h"
-
+#include "controller.cpp"
+#include <string>
+using namespace std;
 
 Stock::Stock() : User() {
 
@@ -19,34 +21,54 @@ Stock::~Stock() {
 
 }
 
-std::string Stock::get_info() const {
 
-	// Implémentation spécifique à Stock de get_info
 
-	return "Stock information";
+string Stock::calculate(int request) const {
 
-}
+	if (request.empty()) {
+		return "error:invalid_request:empty_arguments";
+	}
 
-float Stock::calculate(int parameter) const {
-
-	// Implémentation de calculate
-
-	return 0.0f;
+	request = "calculate_" + request;
+	return Stats(request);
 
 }
 
-int Stock::identify(int parameter) const {
+string Stock::identify(string request) const {
 
-	// Implémentation de identify
+	request = "identify_" + request;
+	return Stats(request);
 
-	return 0;
 
 }
 
-int Stock::simulate(int parameter) const {
+string Stock::simulate(string request) const {
 
-	// Implémentation de simulate
+	request = "simulate_" + request;
+	return Stats(request);
 
-	return 0;
+}
 
+string Stock::create(string request)
+{
+	request = "article:create:" + request;
+	return Table(request);
+}
+
+string Stock::delete_(string request)
+{
+	request = "article:delete:" + request;
+	return Table(request);
+}
+
+string Stock::modify(string request)
+{
+	request = "article:modify:" + request;
+	return Table(request);
+}
+
+string Stock::show(string request)
+{
+	request = "stock:show:" + request;
+	return Table(request);
 }

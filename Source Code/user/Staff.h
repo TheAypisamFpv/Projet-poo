@@ -14,6 +14,7 @@ private:
 public:
 	Staff();
 	~Staff() override;
-	std::string get_info() const override;
-	Staff get_superior() const;
+	
+	Staff get_superior(string request) const;
+	Staff get_superior(string request) const;
 };
