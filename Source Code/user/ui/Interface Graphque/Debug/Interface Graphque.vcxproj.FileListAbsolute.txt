@@ -1,0 +1,4 @@
+C:\Users\mibif\source\repos\Interface Graphque\Debug\InterfaceGraphque.MyForm.resources
+C:\Users\mibif\source\repos\Interface Graphque\Debug\Interface Graphque.vcxproj.GenerateResource.cache
+C:\Users\mibif\source\repos\Interface Graphque\Debug\InterfaceG.exe
+C:\Users\mibif\source\repos\Interface Graphque\Debug\Interface Graphque.vcxproj.AssemblyReference.cache
