@@ -1,5 +1,5 @@
 #include "Staff.h"
-#include "controller.cpp"
+
 Staff::Staff() :User() {
 	//Initialisation specifique a Staff
 	id_staff = 0;

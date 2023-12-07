@@ -8,11 +8,11 @@ using std::string;
 
 string Table(string request) {
 	// normalized request : wich_table:command:parameters
-	// exemple : staff:delete:6 (delete staff with id 6)
+	// exemple : staff:delete:cailloux,rock (delete staff name rock cailloux)
 
 	//check request by checking if there is 2 ':'
 	if (count(request.begin(), request.end(), ':') != 2) {
-		return "error:invalid_request:not_enough_arguments";
+		return "error:invalid_request:wrong_number_argument";
 	}
 
 	// split request
@@ -31,7 +31,7 @@ string Table(string request) {
 
 string Stats(string request) {
 	// normalized request : command:parameters
-	// exemple : total_purchases:6 (get total purchases of user with id 6)
+	// exemple : total_purchases:cailloux (get total purchases of user cailloux)
 
 	//check request by checking if there is 1 ':'
 	if (count(request.begin(), request.end(), ':') != 1) {
