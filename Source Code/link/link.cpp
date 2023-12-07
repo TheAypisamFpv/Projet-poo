@@ -1,16 +1,17 @@
 #using <System.Data.dll>
 #using <iostream>
+#include <string>
 
-using namespace System;
-using namespace System::Data;
-using namespace System::Data::SqlClient;
 
+using namespace std;
+using namespace std::Data;
+using namespace std::Data::SqlClient;
 
 
 int InsereAdresse() {
     try {
         // Chaîne de connexion (remplacez-la par vos propres informations)
-        String^ connectionString = "Data Source=LAPTOP-32D5H3E1\\MSSQL_MAX;Initial Catalog=POO;Integrated Security=True";
+        string^ connectionString = "Data Source=LAPTOP-32D5H3E1\\MSSQL_MAX;Initial Catalog=POO;Integrated Security=True";
 
         // Établir la connexion
         SqlConnection^ connection = gcnew SqlConnection(connectionString);
