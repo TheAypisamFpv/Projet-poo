@@ -1,7 +1,8 @@
 #include "User.h"
 #include "controller.cpp"
+#include "PCH.h"
 
-using std:string;
+
 
 User::User()
 {

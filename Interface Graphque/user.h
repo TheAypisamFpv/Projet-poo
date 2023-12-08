@@ -1,5 +1,5 @@
 #pragma once
-#include <string>
+#include "PCH.h"
 
 class User {
 public:
@@ -11,7 +11,4 @@ public:
 	virtual std::string show(string request);
 	virtual std::string create(string request);
 	virtual std::string modify(string request);
-
-
-
 };

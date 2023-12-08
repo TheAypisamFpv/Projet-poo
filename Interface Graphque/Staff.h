@@ -1,5 +1,6 @@
 #pragma once
 #include "User.h"
+#include "PCH.h"
 
 class Staff :public User {
 private:

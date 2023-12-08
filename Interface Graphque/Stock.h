@@ -2,6 +2,7 @@
 
 #include "User.h"
 #include <string>
+#include "PCH.h"
 using namespace std;
 
 
@@ -24,7 +25,7 @@ public:
 
 
 
-    string calculate(int request) const;
+    string calculate(string request) const;
 
     string identify(string request) const;
 

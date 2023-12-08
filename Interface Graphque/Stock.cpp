@@ -23,7 +23,7 @@ Stock::~Stock() {
 
 
 
-string Stock::calculate(int request) const {
+string Stock::calculate(string request) const {
 
 	if (request.empty()) {
 		return "error:invalid_request:empty_arguments";
@@ -67,7 +67,7 @@ string Stock::create(string request)
 	return Table(request);
 }
 
-string Stock::delete_(string request)
+string Stock::delete_(string request) 
 {
 	if (request.empty()) {
 		return "error:invalid_request:empty_arguments";
