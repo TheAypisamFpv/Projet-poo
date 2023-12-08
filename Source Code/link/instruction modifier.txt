@@ -1,0 +1,205 @@
+CREATE PROCEDURE ModifieFacture
+    @IDFacture INT,
+    @DateFacturation DATE,
+    @DateLivraison DATE,
+    @DateCommande DATE,
+    @MoyenPaiement VARCHAR(50),
+    @PrixOriginal MONEY,
+    @Remise INT,
+    @Marge INT,
+    @TVA INT,
+    @PrixTTC MONEY,
+    @IDAdresse INT
+AS
+BEGIN
+    BEGIN TRY
+        -- Vérifier les conditions avant la modification
+        IF @IDFacture IS NULL OR @DateFacturation IS NULL OR @MoyenPaiement IS NULL OR @PrixOriginal IS NULL OR @PrixTTC IS NULL OR @IDAdresse IS NULL
+        BEGIN
+            -- Si les informations sont incorrectes, lancer une erreur
+            RAISERROR('Les informations fournies sont incorrectes.', 16, 1);
+        END
+
+        UPDATE FACTURE
+        SET
+            FAC_DATE_FACTURATION = @DateFacturation,
+            FAC_DATE_LIVRAISON = @DateLivraison,
+            FAC_DATE_COMMADE = @DateCommande,
+            FAC_MOYENT_PAIMENT = @MoyenPaiement,
+            FAC_PRIX_ORIGINAL = @PrixOriginal,
+            FAC_REMISE = @Remise,
+            FAC_MARGE = @Marge,
+            FAC_TVA = @TVA,
+            FAC_PRIC_TTC = @PrixTTC,
+            ADR_ID_ADRESSE = @IDAdresse
+        WHERE
+            FAC_ID_FACTURE = @IDFacture;
+
+    END TRY
+    BEGIN CATCH
+        ROLLBACK;
+    END CATCH;
+END;
+
+
+
+llllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllll
+
+
+CREATE PROCEDURE ModifieCompteClient
+    @IDCompte INT,
+    @NumeroCompte INT,
+    @Nom VARCHAR(50),
+    @Prenom VARCHAR(50),
+    @Points INT,
+    @Mail VARCHAR(50),
+    @Telephone VARCHAR(12),
+    @DateNaissance DATE,
+    @IDHistorique INT,
+    @IDFacture INT,
+    @IDADresse INT
+AS
+BEGIN
+    BEGIN TRY
+        -- Vérifier les conditions avant la modification
+        IF @IDCompte IS NULL OR @NumeroCompte IS NULL OR @Nom IS NULL OR @Prenom IS NULL OR @Mail IS NULL OR @IDHistorique IS NULL OR @IDFacture IS NULL OR @IDADresse IS NULL
+        BEGIN
+            -- Si les informations sont incorrectes, lancer une erreur
+            RAISERROR('Les informations fournies sont incorrectes.', 16, 1);
+        END
+
+        UPDATE COMPTE_CLIENT
+        SET
+            COMCLI_NUMERO_COMPTE = @NumeroCompte,
+            COMCLI_NOM = @Nom,
+            COMCLI_PRENOM = @Prenom,
+            COMCLI_POINT = @Points,
+            COMCLI_MAIL = @Mail,
+            COMCLI_TELEPHONE = @Telephone,
+            COMCLI_DATE_NAISSANCE = @DateNaissance,
+            HIS_ID_HISTORIQUE = @IDHistorique,
+            FAC_ID_FACTURE = @IDFacture,
+            ADR_ID_ADRESSE = @IDADresse
+        WHERE
+            COMCLI_ID_COMPTE = @IDCompte;
+
+    END TRY
+    BEGIN CATCH
+        ROLLBACK;
+    END CATCH;
+END;
+
+
+
+llllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllll
+
+
+
+CREATE PROCEDURE ModifiePersonnel
+    @IDPersonnel INT,
+    @Nom VARCHAR(50),
+    @Prenom VARCHAR(50),
+    @Telephone VARCHAR(12),
+    @DateEmbauche DATE,
+    @IDSuperieur INT,
+    @IDADresse INT
+AS
+BEGIN
+    BEGIN TRY
+        -- Vérifier les conditions avant la modification
+        IF @IDPersonnel IS NULL OR @Nom IS NULL OR @Prenom IS NULL OR @Telephone IS NULL OR @DateEmbauche IS NULL OR @IDADresse IS NULL
+        BEGIN
+            -- Si les informations sont incorrectes, lancer une erreur
+            RAISERROR('Les informations fournies sont incorrectes.', 16, 1);
+        END
+
+        UPDATE PERSONNEL
+        SET
+            PER_NOM = @Nom,
+            PER_PRENOM = @Prenom,
+            PER_TELEPHONE = @Telephone,
+            PER_DATE_EMBAUCHE = @DateEmbauche,
+            PER_ID_SUPERIEUR = @IDSuperieur,
+            ADR_ID_ADRESSE = @IDADresse
+        WHERE
+            PER_ID_PERSONNEL = @IDPersonnel;
+
+    END TRY
+    BEGIN CATCH
+        ROLLBACK;
+    END CATCH;
+END;
+
+
+
+llllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllll
+
+
+
+CREATE PROCEDURE ModifieCommande
+    @IDFacture INT,
+    @IDAchat INT,
+    @NouvelIDFacture INT,
+    @NouvelIDAchat INT
+AS
+BEGIN
+    BEGIN TRY
+        -- Vérifier les conditions avant la modification
+        IF @IDFacture IS NULL OR @IDAchat IS NULL OR @NouvelIDFacture IS NULL OR @NouvelIDAchat IS NULL
+        BEGIN
+            -- Si les informations sont incorrectes, lancer une erreur
+            RAISERROR('Les informations fournies sont incorrectes.', 16, 1);
+        END
+
+        UPDATE COMMANDE
+        SET
+            FAC_ID_FACTURE = @NouvelIDFacture,
+            ACH_ID_ACHAT = @NouvelIDAchat
+        WHERE
+            FAC_ID_FACTURE = @IDFacture AND ACH_ID_ACHAT = @IDAchat;
+
+    END TRY
+    BEGIN CATCH
+        ROLLBACK;
+    END CATCH;
+END;
+
+
+
+llllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllll
+
+
+
+CREATE PROCEDURE ModifieProduit
+    @IDProduit INT,
+    @Specification VARCHAR(50),
+    @PrixEvolution VARCHAR(50)
+AS
+BEGIN
+    BEGIN TRY
+        -- Vérifier les conditions avant la modification
+        IF @IDProduit IS NULL OR @Specification IS NULL
+        BEGIN
+            -- Si les informations sont incorrectes, lancer une erreur
+            RAISERROR('Les informations fournies sont incorrectes.', 16, 1);
+        END
+
+        UPDATE PRODUIT
+        SET
+            PRO_SPECIFICATION = @Specification,
+            PRO_PRIX_EVOLUTION = @PrixEvolution
+        WHERE
+            PRO_ID_PRODUIT = @IDProduit;
+
+    END TRY
+    BEGIN CATCH
+        ROLLBACK;
+    END CATCH;
+END;
+
+
+
+llllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllll
+
+
+
