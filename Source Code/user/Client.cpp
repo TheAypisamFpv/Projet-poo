@@ -43,24 +43,40 @@ string Client::get_order_details(string request) const
 
 string Client::delete_(string request)
 {
+	if (request.empty()) {
+		return "error:invalid_request:empty_arguments";
+	}
+
 	request = "client:delete:" + request;
 	return Table(request);
 }
 
 string Client::create(string request)
 {
+	if (request.empty()) {
+		return "error:invalid_request:empty_arguments";
+	}
+
 	request = "client:create:" + request;
 	return Table(request);
 }
 
 string Client::modify(string request)
 {
+	if (request.empty()) {
+		return "error:invalid_request:empty_arguments";
+	}
+
 	request = "client:modify:" + request;
 	return Table(request);
 }
 
 string Client::show(string request)
 {
+	if (request.empty()) {
+		return "error:invalid_request:empty_arguments";
+	}
+
 	request = "client:show:" + request;
 	return Table(request);
 }
