@@ -1,6 +1,1 @@
-﻿C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\VC\v160\Microsoft.CppBuild.targets(513,5): warning MSB8028: Le répertoire intermédiaire (Debug\) contient des fichiers partagés provenant d'un autre projet (Interface Graphque.vcxproj). Cela peut entraîner un comportement de nettoyage et de regénération incorrect.
-  Main.cpp
-  MyForm.cpp
-  Génération de code en cours...
-  MyForm.obj : module MSIL détecté ; liens incrémentiels désactivés pour MSIL ; édition de liens complète en cours
-  Interface Graphque.vcxproj -> C:\Users\mibif\source\repos\Interface Graphque\Debug\InterfaceG.exe
+﻿
