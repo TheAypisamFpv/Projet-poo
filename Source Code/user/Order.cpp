@@ -17,12 +17,20 @@ Order::~Order()
 
 std::string Order::create(string request)
 {
+	if (request.empty()) {
+		return "error:invalid_request:empty_arguments";
+	}
+
 	request = "order:create:" + request;
 	return Table(request);
 }
 
 std::string Order::delete_(string request)
 {
+	if (request.empty()) {
+		return "error:invalid_request:empty_arguments";
+	}
+
 	request = "order:delete:" + request;
 	return Table(request);
 
@@ -30,6 +38,10 @@ std::string Order::delete_(string request)
 
 std::string Order::modify(string request)
 {
+	if (request.empty()) {
+		return "error:invalid_request:empty_arguments";
+	}
+
 	request = "order:modify:" + request;
 	return Table(request);
 
@@ -37,6 +49,10 @@ std::string Order::modify(string request)
 
 string Order::show(string request)
 {
+	if (request.empty()) {
+		return "error:invalid_request:empty_arguments";
+	}
+
 	request = "order:show:" + request;
 	return Table(request);
 }

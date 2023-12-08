@@ -28,14 +28,20 @@ string User::get_staff() const
 
 string User::delete_(string request)
 {
-	
+	if (request.empty()) {
+		return "error:invalid_request:empty_arguments";
+	}
+
 	request = "user:delete:" + request;
 	return Table(request);
 }
 
 string User::show(string request)
 { 
-	
+	if (request.empty()) {
+		return "error:invalid_request:empty_arguments";
+	}
+
 	request = "user:show:" + request;
 	return Table(request);
 
@@ -46,6 +52,10 @@ string User::show(string request)
 	
 string User::create(string request)
 {  
+	if (request.empty()) {
+		return "error:invalid_request:empty_arguments";
+	}
+
 	request = "user:create:" + request;
 	return Table(request);
 
@@ -54,6 +64,10 @@ string User::create(string request)
 
 string User::modify(string request)
 {
+	if (request.empty()) {
+		return "error:invalid_request:empty_arguments";
+	}
+
 	request = "user:modify:" + request;
 	return Table(request);
 

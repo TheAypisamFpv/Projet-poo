@@ -24,24 +24,40 @@ Staff Staff::get_superior(string request) const
 
 string Staff::create(string request)
 {
+	if (request.empty()) {
+		return "error:invalid_request:empty_arguments";
+	}
+
 	request = "staff:create:" + request;
 	return Table(request);
 }
 
 string Staff::delete_(string request)
 {
+	if (request.empty()) {
+		return "error:invalid_request:empty_arguments";
+	}
+
 	request = "staff:delete:" + request;
 	return Table(request);
 }
 
 string Staff::modify(string request)
 {
+	if (request.empty()) {
+		return "error:invalid_request:empty_arguments";
+	}
+
 	request = "staff:modify:" + request;
 	return Table(request);
 }
 
 string Staff::show(string request)
 {
+	if (request.empty()) {
+		return "error:invalid_request:empty_arguments";
+	}
+
 	request = "staff:show:" + request;
 	return Table(request);
 }

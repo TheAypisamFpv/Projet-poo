@@ -36,6 +36,10 @@ string Stock::calculate(int request) const {
 
 string Stock::identify(string request) const {
 
+	if (request.empty()) {
+		return "error:invalid_request:empty_arguments";
+	}
+
 	request = "identify_" + request;
 	return Stats(request);
 
@@ -44,6 +48,10 @@ string Stock::identify(string request) const {
 
 string Stock::simulate(string request) const {
 
+	if (request.empty()) {
+		return "error:invalid_request:empty_arguments";
+	}
+
 	request = "simulate_" + request;
 	return Stats(request);
 
@@ -51,24 +59,40 @@ string Stock::simulate(string request) const {
 
 string Stock::create(string request)
 {
+	if (request.empty()) {
+		return "error:invalid_request:empty_arguments";
+	}
+
 	request = "article:create:" + request;
 	return Table(request);
 }
 
 string Stock::delete_(string request)
 {
+	if (request.empty()) {
+		return "error:invalid_request:empty_arguments";
+	}
+
 	request = "article:delete:" + request;
 	return Table(request);
 }
 
 string Stock::modify(string request)
 {
+	if (request.empty()) {
+		return "error:invalid_request:empty_arguments";
+	}
+
 	request = "article:modify:" + request;
 	return Table(request);
 }
 
 string Stock::show(string request)
 {
+	if (request.empty()) {
+		return "error:invalid_request:empty_arguments";
+	}
+
 	request = "stock:show:" + request;
 	return Table(request);
 }
