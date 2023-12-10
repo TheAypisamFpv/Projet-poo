@@ -1,35 +1,144 @@
 ﻿#pragma once
-
-#include "User.h"
 #include <string>
-#include "PCH.h"
+#include "link.h"
+
 using namespace std;
 
-
-
-class Stock : public User {
-
+class stock : public link {
 private:
-
-    int id_stock;
-
-    // Propri�t�s sp�cifiques � Stock
-
+	string product_name;
+	string id_product;
+	string wharehouse_name;
+	string id_wharehouse;
+	string quantity;
 
 
 public:
+	stock() {};
+	~stock() {};
 
-    Stock();
+	string create(string paramter);
+	string modify(string paramter);
+	string delete_(string paramter);
+	string show(string paramter);
 
-    ~Stock() override;
+	// getters
+	string get_product_name() {
+		if (this->product_name.empty() && this->id_product.empty()) {
+			// error
+			return "error:stock:get_product_name:product_name_and_id_product_are_empty";
+		}
+		if (this->product_name.empty()) {
+			// get the name of the product
+			string request = "SELECT [PRO_NOM_PRODUIT] FROM [dbo].[PRODUIT] WHERE PRO_ID_PRODUIT = " + get_id_product() + ";";
+			string response = link::execute(request);
 
+			// set the product_name
+			this->product_name = response;
+		}
+		return this->product_name;
+	};
 
+	string get_id_product() {
+		if (this->id_product.empty()) {
+			// get the id of the product
+			string request = "SELECT [PRO_ID_PRODUIT] FROM [dbo].[PRODUIT] WHERE PRO_NOM_PRODUIT LIKE '" + get_product_name() + "';";
+			string response = link::execute(request);
 
-    string calculate(string request) const;
+			// set the id_product
+			this->id_product = response;
+		}
+		return this->id_product;
+	};
 
-    string identify(string request) const;
+	string get_wharehouse_name() {
+		if (this->wharehouse_name.empty() && this->id_wharehouse.empty()) {
+			// error
+			return "error:stock:get_wharehouse_name:wharehouse_name_and_id_wharehouse_are_empty";
+		}
+		if (this->wharehouse_name.empty()) {
+			// get the name of the wharehouse
+			string request = "SELECT [MAG_NOM] FROM [dbo].[MAGASIN] WHERE MAG_ID_MAGASIN = " + get_id_wharehouse() + ";";
+			string response = link::execute(request);
 
-    string simulate(string request) const;
+			// set the wharehouse_name
+			this->wharehouse_name = response;
+		}
+		return this->wharehouse_name;
+	};
 
+	string get_id_wharehouse() {
+		if (this->id_wharehouse.empty()) {
+			// get the id of the wharehouse
+			string request = "SELECT [MAG_ID_MAGASIN] FROM [dbo].[MAGASIN] WHERE MAG_NOM LIKE '" + get_wharehouse_name() + "';";
+			string response = link::execute(request);
+
+			// set the id_wharehouse
+			this->id_wharehouse = response;
+		}
+		return this->id_wharehouse;
+	};
+
+	string get_quantity() {
+		if (this->quantity.empty()) {
+			// get the quantity
+			string request = "SELECT [STO_QUANTITE] FROM [dbo].[STOCK] WHERE PRO_ID_PRODUIT = " + get_id_product() + " AND MAG_ID_MAGASIN = " + get_id_wharehouse() + ";";
+			string response = link::execute(request);
+
+			// set the quantity
+			this->quantity = response;
+		}
+		return this->quantity;
+	};
+
+	string save_parameter() {
+		// save all parameters to the database
+		// check if a stock alreday exists with the id_product and id_wharehouse
+		// if it does, modify the quantity
+		// else create a new stock
+		// id_product and id_wharehouse are retrieved from the database using the product_name if they're not set
+
+		string request, response;
+
+		if (id_product.empty()) {
+			// get the id of the product
+			request = "SELECT [PRO_ID_PRODUIT] FROM [dbo].[PRODUIT] WHERE PRO_NOM_PRODUIT LIKE '" + product_name + "';";
+			response = link::execute(request);
+
+			// set the id_product
+			this->id_product = response;
+		}
+		if (id_wharehouse.empty()) {
+			// get the id of the wharehouse
+			request = "SELECT [MAG_ID_MAGASIN] FROM [dbo].[MAGASIN] WHERE MAG_NOM LIKE '" + wharehouse_name + "';";
+			response = link::execute(request);
+
+			// set the id_wharehouse
+			this->id_wharehouse = response;
+		}
+
+		// check if a stock already exists with the id_product and id_wharehouse
+		request = "SELECT [STO_QUANTITE] FROM [dbo].[STOCK] WHERE PRO_ID_PRODUIT = " + id_product + " AND MAG_ID_MAGASIN = " + id_wharehouse + ";";
+		response = link::execute(request);
+
+		if (response.empty()) {
+			// create a new stock
+			request = "INSERT INTO [dbo].[STOCK] ([PRO_ID_PRODUIT], [MAG_ID_MAGASIN], [STO_QUANTITE]) VALUES (" + id_product + ", " + id_wharehouse + ", " + quantity + ");";
+			response = link::execute(request);
+		}
+		else {
+			// modify the quantity
+			request = "UPDATE [dbo].[STOCK] SET [STO_QUANTITE] = " + quantity + " WHERE PRO_ID_PRODUIT = " + id_product + " AND MAG_ID_MAGASIN = " + id_wharehouse + ";";
+			response = link::execute(request);
+		}
+
+		return response;
+	}
+
+	// setters
+	void set_product_name(string product_name) { this->product_name = product_name; };
+	void set_id_product(string id_product) { this->id_product = id_product; };
+	void set_wharehouse_name(string wharehouse_name) { this->wharehouse_name = wharehouse_name; };
+	void set_id_wharehouse(string id_wharehouse) { this->id_wharehouse = id_wharehouse; };
+	void set_quantity(string quantity) { this->quantity = quantity; };
 };
-
