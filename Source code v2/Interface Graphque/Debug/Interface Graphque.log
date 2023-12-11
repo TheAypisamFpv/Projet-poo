@@ -1,6 +1,23 @@
 ﻿C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\VC\v160\Microsoft.CppBuild.targets(513,5): warning MSB8028: Le répertoire intermédiaire (Debug\) contient des fichiers partagés provenant d'un autre projet (Interface Graphque.vcxproj). Cela peut entraîner un comportement de nettoyage et de regénération incorrect.
+  CLcad.cpp
+  Client.cpp
+C:\Users\mibif\Documents\GitHub\Projet-poo\Source code v2\Interface Graphque\Client.cpp(99,20): warning C4018: '<' : incompatibilité signed/unsigned
+C:\Users\mibif\Documents\GitHub\Projet-poo\Source code v2\Interface Graphque\Client.cpp(138,21): warning C4018: '<' : incompatibilité signed/unsigned
+C:\Users\mibif\Documents\GitHub\Projet-poo\Source code v2\Interface Graphque\Client.cpp(185,20): warning C4018: '<' : incompatibilité signed/unsigned
+  CMDMain.cpp
+  controller.cpp
+C:\Users\mibif\Documents\GitHub\Projet-poo\Source code v2\Interface Graphque\controller.cpp(21,20): warning C4018: '<' : incompatibilité signed/unsigned
+  link.cpp
+  MyForm.cpp
   Main.cpp
-C:\Users\mibif\Documents\GitHub\Projet-poo\Source code v2\Interface Graphque\Main.cpp(7,5): warning C4007: 'WinMain' : doit être '__stdcall'
-C:\Users\mibif\Documents\GitHub\Projet-poo\Source code v2\Interface Graphque\Main.cpp(7,5): error C2731: 'WinMain' : impossible de surcharger la fonction
-C:\Users\mibif\Documents\GitHub\Projet-poo\Source code v2\Interface Graphque\Main.cpp(7): message : voir la déclaration de 'WinMain'
-C:\Users\mibif\Documents\GitHub\Projet-poo\Source code v2\Interface Graphque\Main.cpp(7,5): error C4439: 'WinMain' : une définition de fonction avec un type managé dans la signature doit avoir une convention d'appel __clrcall
+  Order.cpp
+C:\Users\mibif\Documents\GitHub\Projet-poo\Source code v2\Interface Graphque\Order.cpp(117,20): warning C4018: '<' : incompatibilité signed/unsigned
+C:\Users\mibif\Documents\GitHub\Projet-poo\Source code v2\Interface Graphque\Order.cpp(157,21): warning C4018: '<' : incompatibilité signed/unsigned
+  Staff.cpp
+C:\Users\mibif\Documents\GitHub\Projet-poo\Source code v2\Interface Graphque\Staff.cpp(106,20): warning C4018: '<' : incompatibilité signed/unsigned
+  Stock.cpp
+  Génération de code en cours...
+C:\Users\mibif\Documents\GitHub\Projet-poo\Source code v2\Interface Graphque\Stock.cpp(118): warning C4715: 'stock::show' : les chemins de contrôle ne retournent pas tous une valeur
+C:\Users\mibif\Documents\GitHub\Projet-poo\Source code v2\Interface Graphque\controller.cpp(106): warning C4715: 'Controller::csv_input' : les chemins de contrôle ne retournent pas tous une valeur
+  CLcad.obj : module MSIL détecté ; liens incrémentiels désactivés pour MSIL ; édition de liens complète en cours
+  Interface Graphque.vcxproj -> C:\Users\mibif\Documents\GitHub\Projet-poo\Source code v2\Interface Graphque\Debug\InterfaceG.exe
