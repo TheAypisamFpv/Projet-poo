@@ -24,7 +24,7 @@ Apres avoir ouvert l'application, vous pouvez selectionner le fait de faire un c
 
 
 
-## Table
+# Table
 ​Dans la selection Table, vous pouvez selection sur quoi faire une action (`Personnel`, `Client`, `Commande`, `Stock`).
 </p>
 <p align="center"> 
@@ -34,7 +34,7 @@ Apres avoir ouvert l'application, vous pouvez selectionner le fait de faire un c
 
 
 
-## Personnel
+### Personnel
 ​Puis selectionner l'action a faire (`créer`, `modifier`, `supprimer`).
 </p>
 <p align="center"> 
@@ -43,10 +43,26 @@ Apres avoir ouvert l'application, vous pouvez selectionner le fait de faire un c
 </p>
 
 
-## créer
-En selectionnant `créer`, les information neccesaire a la creation d'un Peronnel s'affichent
+### créer
+En selectionnant `créer`, les information neccesaire a la creation d'un Peronnel s'affichent.
 </p>
 <p align="center"> 
   <a href="" rel="noopener">
  <img src="https://github.com/TheAypisamFpv/Projet-poo/blob/main/images/how_to_use/table_personnel_creer.png" alt="table_personnel_creer"></a>
+</p>
+
+### modifier
+En selectionnant `créer`, les information neccesaire a la modification d'un Peronnel s'affichent.
+</p>
+<p align="center"> 
+  <a href="" rel="noopener">
+ <img src="https://github.com/TheAypisamFpv/Projet-poo/blob/main/images/how_to_use/table_personnel_modif.png" alt="table_personnel_suppr"></a>
+</p>
+
+### supprimer
+En selectionnant `supprimer`, les information neccesaire a la suppression d'un Peronnel s'affichent.
+</p>
+<p align="center"> 
+  <a href="" rel="noopener">
+ <img src="https://github.com/TheAypisamFpv/Projet-poo/blob/main/images/how_to_use/table_personnel_suppr.png" alt="table_personnel_suppr"></a>
 </p>
