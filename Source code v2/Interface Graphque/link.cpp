@@ -3,7 +3,9 @@
 #include "order.h"
 #include "staff.h"
 #include "stock.h"
+#include "CLcad.h"
 #include <string>
+
 
 using namespace std;
 
@@ -85,8 +87,14 @@ string link::hub(string table, string command, string parameters) {
 	}
 }
 
-string link::execute(string request) {
-	return "ok";
+System::Data::DataSet^ link::execute(string request) {
+
+	NS_Comp_Data::CLcad^ oCLcad = gcnew NS_Comp_Data::CLcad();
+	System::String^ request2 = gcnew System::String(request.c_str());
+	return oCLcad->exec(request2, "client");
 }
 
 
+string link::get_first_item(System::Data::DataSet^ data) {
+	return msclr::interop::marshal_as<std::string>(data->Tables[0]->Rows[0]->ItemArray[0]->ToString());
+}
