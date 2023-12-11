@@ -7,9 +7,7 @@
  <img src="https://github.com/TheAypisamFpv/Projet-poo/blob/main/logo/CESINFO_fond_blancpdn.png" alt="CESINFO_fond_blanc"></a>
 </p>
 
-<p align="left"> ​Ce projet a pour but de créer une application de gestion d'entreprise avec connexion à une base de données.
-    <br> 
-</p>
+Ce projet a pour but de créer une application de gestion d'entreprise avec connexion à une base de données.
 
 ---
 
@@ -17,8 +15,8 @@
 
 
 
-<p align="left"> ​Apres avoir ouvert l'application, vous pouvez selectionner le fait de faire un changement a une `table` ou faire des `statistiques`.
-    <br> 
+Apres avoir ouvert l'application, vous pouvez selectionner le fait de faire un changement a une `table` ou faire des `statistiques`.
+
   
 </p>
 <p align="center"> 
@@ -30,8 +28,8 @@
 
 
 
-<p align="left"> ​Dans la selection Table, vous pouvez selection sur quoi faire une action, `Personnel`, `Client`, `Commande`, `Stock`.
-    <br> 
+​Dans la selection Table, vous pouvez selection sur quoi faire une action, `Personnel`, `Client`, `Commande`, `Stock`.
+
   
 </p>
 <p align="center"> 
@@ -43,10 +41,10 @@
 
 
 
-<p align="left"> ​Vous pouvez ensuite selectionner l'action a faire (`créer`, `modifier`, `supprimer`).
-    <br>
+​Vous pouvez ensuite selectionner l'action a faire (`créer`, `modifier`, `supprimer`).
 
-    </p>
+
+</p>
 <p align="center"> 
   <a href="" rel="noopener">
  <img src="https://github.com/TheAypisamFpv/Projet-poo/blob/main/images/how_to_use/table_personnel_choix.png" alt="table_personnel_choix"></a>
