@@ -123,7 +123,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="CLcad.cpp" />
     <ClCompile Include="Client.cpp" />
+    <ClCompile Include="CMDMain.cpp" />
     <ClCompile Include="controller.cpp" />
     <ClCompile Include="link.cpp" />
     <ClCompile Include="MyForm.cpp" />
@@ -133,6 +135,7 @@
     <ClCompile Include="Stock.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="CLcad.h" />
     <ClInclude Include="Client.h" />
     <ClInclude Include="link.h" />
     <ClInclude Include="MyForm.h">

@@ -120,9 +120,8 @@ std::string order::delete_(std::string parameters) {
 		}
 	}
 
-	std::string request = "DELETE FROM [dbo].[FACTURE] WHERE FAC_ID_FACTURE = '" + parameters + "';";
-	std::string response = link::execute(request);
-
+	string request = "DELETE FROM [dbo].[FACTURE] WHERE FAC_ID_FACTURE = '" + parameters + "';";
+	string response = link::get_first_item(link::execute(request));
 
 	if (response == "ok") {
 		return "order:deleted";
@@ -161,7 +160,7 @@ std::string order::show(std::string parameters) {
 			}
 		}
 		request = "SELECT * FROM [dbo].[FACTURE] WHERE FAC_ID_FACTURE = '" + parameters + "';";
-		response = link::execute(request);
+		response = link::get_first_item(link::execute(request));
 	}
 
 	return "order:show:" + response;

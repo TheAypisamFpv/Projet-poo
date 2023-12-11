@@ -72,7 +72,7 @@ string stock::delete_(string parameters) {
 
 	string request, response;
 	request = "DELETE FROM [dbo].[stock] WHERE PRO_ID_PRODUIT = " + get_id_product() + " AND MAG_ID_MAGASIN = " + get_id_wharehouse() + ";";
-	response = link::execute(request);
+	response = link::get_first_item(link::execute(request));
 
 	if (response == "ok") {
 		return "stock:deleted:";
@@ -108,7 +108,7 @@ string stock::show(string parameters) {
 
 		string request, response;
 		request = "SELECT * FROM [dbo].[STOCK] WHERE PRO_ID_PRODUIT = " + get_id_product() + " AND MAG_ID_MAGASIN = " + get_id_wharehouse() + ";";
-		response = link::execute(request);
+		response = link::get_first_item(link::execute(request));
 
 		return response;
 	}

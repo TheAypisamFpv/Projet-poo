@@ -19,7 +19,7 @@ private:
 public:
 	staff() {
 		// set all variables to default values
-		this->id_staff = ""; 
+		this->id_staff = "";
 		this->name = "";
 		this->surname = "";
 		this->phone = "";
@@ -56,21 +56,20 @@ public:
 			// create a new staff
 			// get the id of the post
 			request = "SELECT [POS_ID_POSTE] FROM [dbo].[POSTE] WHERE POS_POSTE LIKE '" + job + "';";
-			response = link::execute(request);
+			response = link::get_first_item(link::execute(request));
 
-			// set the id of the post
+			// if the job does not exit, return an error
 			if (response.empty()) {
-				// if the post does not exist, create it
-				request = "INSERT INTO [dbo].[POSTE] ([POS_POSTE]) VALUES ('" + job + "');";
-				response = link::execute(request);
-				request = "SELECT [POS_ID_POSTE] FROM [dbo].[POSTE] WHERE POS_POSTE LIKE '" + job + "';";
-				response = link::execute(request);
+				return "staff:job does not exist";
 			}
+
+
+
 			string job_id = response;
 
 			// create the staff
 			request = "INSERT INTO [dbo].[PERSONNEL] ([PER_NOM], [PER_PRENOM], [PER_TELEPHONE], [PER_DATE_EMBAUCHE], [PER_ID_SUPERIEUR], [POS_ID_POSTE]) VALUES ('" + name + "', '" + surname + "', '" + phone + "', '" + hiring_date + "', '" + id_superior + "', '" + job_id + "');";
-			response = link::execute(request);
+			response = link::get_first_item(link::execute(request));
 			return response;
 		}
 		else {
@@ -90,7 +89,7 @@ public:
 			request = request.substr(0, request.size() - 2);
 			// add the where clause
 			request += " WHERE [PER_ID_PERSONNEL] = '" + id_staff + "';";
-			response = link::execute(request);
+			response = link::get_first_item(link::execute(request));
 			return response;
 		}
 	}
