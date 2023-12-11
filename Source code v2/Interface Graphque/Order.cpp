@@ -127,11 +127,12 @@ System::Data::DataSet^ order::show(std::string parameters) {
 	// parameters: id_order OR id_client OR own
 
 	std::string request, response;
+	System::Data::DataSet^ void_;
 
 	// check if parameters is an integer
 	for (int i = 0; i < parameters.length(); i++) {
 		if (!isdigit(parameters[i])) {
-			return ;// il est chokbar
+			return void_;// il est chokbar
 		}
 	}
 	request = "SELECT * FROM [dbo].[FACTURE] WHERE FAC_ID_FACTURE = '" + parameters + "';";

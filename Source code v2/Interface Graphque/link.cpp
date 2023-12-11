@@ -3,7 +3,7 @@
 #include "order.h"
 #include "staff.h"
 #include "stock.h"
-#include "CLcad.h"
+
 #include <string>
 
 
@@ -70,13 +70,18 @@ System::Data::DataSet^ link::hub(string table, string command, string parameters
 			return s.show(parameters);
 		}
 	}
+	System::Data::DataSet^ void_;
+	return void_;
 }
 
-System::Data::DataSet^ link::execute(string request) {
+System::Data::DataSet^ link::execute(string request, string tablename) {
 
 	NS_Comp_Data::CLcad^ oCLcad = gcnew NS_Comp_Data::CLcad();
 	System::String^ request2 = gcnew System::String(request.c_str());
-	return oCLcad->exec(request2, "client");
+
+	System::String^ tablename2 = gcnew System::String(tablename.c_str());
+
+	return oCLcad->exec(request2, tablename2);
 }
 
 

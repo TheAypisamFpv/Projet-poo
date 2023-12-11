@@ -20,7 +20,7 @@ System::Data::DataSet^ NS_Comp_Data::CLcad::exec(System::String^ sSql, System::S
 	this->sSQL = sSql;
 	this->oCmd->CommandText = this->sSQL;
 	this->oDA->SelectCommand = this->oCmd;
-	this->oDA->Fill(this->oDS, "Table");
+	this->oDA->Fill(this->oDS, sDatTableName);
 
 	return this->oDS;
 }

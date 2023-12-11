@@ -49,7 +49,7 @@ public:
 	void set_id_historique(string id_historique) { this->id_historique = id_historique; };
 
 
-	string save_parameter() {
+	void save_parameter() {
 		// save all parameters to the database
 		// if id_compte is empty, then save_parameter is called to create a client
 		// if id_compte is not empty, then save_parameter is called to modify a client
@@ -98,9 +98,8 @@ public:
 			request = request.substr(0, request.size() - 2);
 			request += " WHERE COMCLI_ID_COMPTE = '" + id_compte + "';";
 
-			response += "\n" + link::get_first_item(link::execute(request));
+			link::execute(request);
 		}
-		return response;
 	}
 
 	string get_id_compte() { return id_compte; };

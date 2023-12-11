@@ -2,6 +2,7 @@
 #include <string>
 #include <iostream>
 #include <msclr\marshal_cppstd.h>
+#include "CLcad.h"
 
 // SQL command possible:
 // CLients: create, modify, delete, show
@@ -14,8 +15,6 @@
 using namespace std;
 
 class link {
-
-
 public:
 	link() {};
 	~link() {};

@@ -1,9 +1,9 @@
 #include "client.h"
 #include <algorithm>
 
+
 void client::create(string parameter) {
 	// name,surname,mail,phone,address,birth_date
-
 	// chekc if there is the right number of parameters
 	int number_of_parameters = count(parameter.begin(), parameter.end(), ',') + 1;
 	if (number_of_parameters != 6) {
@@ -146,6 +146,7 @@ void client::delete_(string parameters) {
 System::Data::DataSet^ client::show(string parameters) {
 	// id_compte 
 	string response;
+	System::Data::DataSet^ void_;
 	// if parameters is "own", then show the client's own information (without sql request)
 	if (parameters == "own") {
 		parameters = this->id_compte;
@@ -154,7 +155,7 @@ System::Data::DataSet^ client::show(string parameters) {
 	// check if id_compte is correct (must be an integer)
 	for (int i = 0; i < this->id_compte.length(); i++) {
 		if (isdigit(this->id_compte[i]) == false) {
-			return ;// il est chokbar
+			return void_;// il est chokbar
 		}
 	}
 

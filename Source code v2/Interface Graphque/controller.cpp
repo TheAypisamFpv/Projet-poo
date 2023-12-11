@@ -36,13 +36,16 @@ System::Data::DataSet^ Controller::Table(System::String^ request_) {
 	// normalized request : table:command:parameters
 	// exemple : staff:delete:cailloux,rock (delete staff name rock cailloux)
 
+	System::Data::DataSet^ void_;
+
+
 	// convert System::String to std::string
 	string request = msclr::interop::marshal_as<std::string>(request_);
 
 	// check if there is an attempt to do an SQL injection
 	string SQL_chokbar = SQL_check(request);
 	if (SQL_chokbar != "ok") {
-		return; // il est chokbar
+		return void_; // il est chokbar
 	}
 
 
@@ -50,7 +53,7 @@ System::Data::DataSet^ Controller::Table(System::String^ request_) {
 	//check request by checking if there is 2 ':' (3 arguments)
 	int argument_number = count(request.begin(), request.end(), ':') + 1;
 	if (argument_number != 3) {
-		return ; // il est chokbar
+		return void_; // il est chokbar
 	}
 	// split request
 	string table = request.substr(0, request.find(":"));
@@ -60,13 +63,13 @@ System::Data::DataSet^ Controller::Table(System::String^ request_) {
 
 	// check if none is empty
 	if (table.empty() || command.empty() || parameters.empty()) {
-		return; // il est chokbar
+		return void_; // il est chokbar
 	}
 
 
-	link link;
+	link sql;
 
-	return link.hub(table, command, parameters);
+	return sql.hub(table, command, parameters);
 }
 
 
@@ -76,13 +79,16 @@ System::Data::DataSet^ Controller::Stats(System::String^ request_) {
 	// normalized request : command:parameters
 	// exemple : total_purchases:cailloux (get total purchases of user cailloux)
 
+	System::Data::DataSet^ void_;
+
+
 	// convert System::String to std::string
 	string request = msclr::interop::marshal_as<std::string>(request_);
 
 	// check if there is an attempt to do an SQL injection
 	string SQL_chokbar = SQL_check(request);
 	if (SQL_chokbar != "ok") {
-		return; // il est chokbar
+		return void_; // il est chokbar
 	}
 
 
@@ -91,7 +97,7 @@ System::Data::DataSet^ Controller::Stats(System::String^ request_) {
 	//check request by checking if there is 1 ':' (2 arguments)
 	int argument_number = count(request.begin(), request.end(), ':') + 1;
 	if (argument_number != 2) {
-		return ; // il est chokbar
+		return void_; // il est chokbar
 	}
 
 
@@ -100,10 +106,10 @@ System::Data::DataSet^ Controller::Stats(System::String^ request_) {
 
 System::Data::DataSet^ Controller::csv_input(string csv) {
 	// input csv file into database
-
+	System::Data::DataSet^ void_;
 	// check if there is an attempt to do an SQL injection
 	string SQL_chokbar = SQL_check(csv);
 	if (SQL_chokbar != "ok") {
-		return; // il est chokbar
+		return void_; // il est chokbar
 	}
 }
