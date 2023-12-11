@@ -2,12 +2,12 @@
 
 using namespace std;
 
-string stock::create(string parameters) {
+void stock::create(string parameters) {
 	// parameters: product_name, wharehouse_name, quantity
 
 	int number_of_parameters = count(parameters.begin(), parameters.end(), ',') + 1;
 	if (number_of_parameters != 3) {
-		return "error:stock:create:wrong_number_of_parameters, expected 3 but got " + to_string(number_of_parameters);// il est chokbar
+		return;// il est chokbar
 	}
 
 	string product_name = parameters.substr(0, parameters.find(","));
@@ -24,16 +24,16 @@ string stock::create(string parameters) {
 
 	save_parameter();
 
-	return "stock:created:";
+	return ;
 }
 
 
-string stock::modify(string parameters) {
+void stock::modify(string parameters) {
 	// parameters: product_name, wharehouse_name, quantity
 
 	int number_of_parameters = count(parameters.begin(), parameters.end(), ',') + 1;
 	if (number_of_parameters != 3) {
-		return "error:stock:modify:wrong_number_of_parameters, expected 3 but got " + to_string(number_of_parameters);// il est chokbar
+		return;
 	}
 
 	string product_name = parameters.substr(0, parameters.find(","));
@@ -49,17 +49,15 @@ string stock::modify(string parameters) {
 	set_quantity(quantity);
 
 	save_parameter();
-
-	return "stock:modified:" + show("own");
 }
 
 
-string stock::delete_(string parameters) {
+void stock::delete_(string parameters) {
 	// parameters: product_name, wharehouse_name
 
 	int number_of_parameters = count(parameters.begin(), parameters.end(), ',') + 1;
 	if (number_of_parameters != 2) {
-		return "error:stock:delete:wrong_number_of_parameters, expected 2 but got " + to_string(number_of_parameters);// il est chokbar
+		return ;// il est chokbar
 	}
 
 	string product_name = parameters.substr(0, parameters.find(","));
@@ -72,18 +70,11 @@ string stock::delete_(string parameters) {
 
 	string request, response;
 	request = "DELETE FROM [dbo].[stock] WHERE PRO_ID_PRODUIT = " + get_id_product() + " AND MAG_ID_MAGASIN = " + get_id_wharehouse() + ";";
-	response = link::get_first_item(link::execute(request));
-
-	if (response == "ok") {
-		return "stock:deleted:";
-	}
-	else {
-		return "error:stock:delete:" + response;
-	}
+	link::execute(request);
 }
 
 
-string stock::show(string parameters) {
+System::Data::DataSet^ stock::show(string parameters) {
 	// parameters can be either:
 	// - own
 	// - product_name, wharehouse_name
@@ -92,9 +83,7 @@ string stock::show(string parameters) {
 	if (number_of_parameters == 1) {
 		if (parameters == "own") {
 			parameters = get_product_name() + "," + get_wharehouse_name();
-		}
-		else {
-			return "error:stock:show:wrong_parameter, expected 'own' but got " + parameters;// il est chokbar
+			number_of_parameters = 2;
 		}
 	}
 	else if (number_of_parameters == 2) {
@@ -108,11 +97,6 @@ string stock::show(string parameters) {
 
 		string request, response;
 		request = "SELECT * FROM [dbo].[STOCK] WHERE PRO_ID_PRODUIT = " + get_id_product() + " AND MAG_ID_MAGASIN = " + get_id_wharehouse() + ";";
-		response = link::get_first_item(link::execute(request));
-
-		return response;
-	}
-	else {
-		return "error:stock:show:wrong_number_of_parameters, expected 1 or 2 but got " + to_string(number_of_parameters);// il est chokbar
+		return link::execute(request);
 	}
 }

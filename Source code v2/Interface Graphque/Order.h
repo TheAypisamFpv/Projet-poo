@@ -41,10 +41,10 @@ public:
 
 	~order() {};
 
-	string create(string paramter);
-	string modify(string paramter);
-	string delete_(string paramter);
-	string show(string paramter);
+	void create(string paramter);
+	void modify(string paramter);
+	void delete_(string paramter);
+	System::Data::DataSet^ show(string paramter);
 
 	// getters
 	string get_id_order() { return this->id_order; };
@@ -62,7 +62,7 @@ public:
 	string get_id_client() { return this->id_client; };
 
 
-	string save_parameter() {
+	void save_parameter() {
 		// save all parameters to the database
 		// if id_order is empty, create a new order
 		// else update the order with the id_order
@@ -156,9 +156,9 @@ public:
 			request = request.substr(0, request.size() - 2);
 			// add the where clause
 			request += " WHERE [FAC_ID_FACTURE] = '" + this->id_order + "';";
-			response = link::get_first_item(link::execute(request));
+			link::execute(request);
 		}
-		return response;
+		return ;
 	};
 
 

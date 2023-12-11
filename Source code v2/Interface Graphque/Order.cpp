@@ -2,12 +2,12 @@
 
 using namespace std;
 
-std::string order::create(std::string parameters) {
+void order::create(std::string parameters) {
 	// parameters: id_order,facturation_date,delivery_date,paiment_number,paiment_methode,comercial_marge,comercial_reduction,tva,id_client,items
 
 	int number_of_parameters = count(parameters.begin(), parameters.end(), ',') + 1;
 	if (number_of_parameters != 10) {
-		return "error:order:create:wrong_number_of_parameters, expected 10 but got " + to_string(number_of_parameters);// il est chokbar
+		return ;// il est chokbar
 	}
 
 	std::string id_order = parameters.substr(0, parameters.find(","));
@@ -52,16 +52,16 @@ std::string order::create(std::string parameters) {
 
 	save_parameter();
 
-	return "order:created:" + show("own");
+	return ;
 }
 
 
-std::string order::modify(std::string parameters) {
+void order::modify(std::string parameters) {
 	// parameters: id_order,facturation_date,delivery_date,paiment_number,paiment_methode,comercial_marge,comercial_reduction,tva,id_client,items
 
 	int number_of_parameters = count(parameters.begin(), parameters.end(), ',') + 1;
 	if (number_of_parameters != 10) {
-		return "error:order:modify:wrong_number_of_parameters, expected 10 but got " + to_string(number_of_parameters);// il est chokbar
+		return ;// il est chokbar
 	}
 
 	std::string id_order = parameters.substr(0, parameters.find(","));
@@ -105,63 +105,35 @@ std::string order::modify(std::string parameters) {
 	set_items(items);
 
 	save_parameter();
-
-	return "order:modified:" + show("own");
 }
 
 
-std::string order::delete_(std::string parameters) {
+void order::delete_(std::string parameters) {
 	// parameters: id_order
 
 	// check if paramter is an integer
 	for (int i = 0; i < parameters.length(); i++) {
 		if (!isdigit(parameters[i])) {
-			return "error:order:delete:id_order_wrong_type";// il est chokbar
+			return ;// il est chokbar
 		}
 	}
 
 	string request = "DELETE FROM [dbo].[FACTURE] WHERE FAC_ID_FACTURE = '" + parameters + "';";
-	string response = link::get_first_item(link::execute(request));
-
-	if (response == "ok") {
-		return "order:deleted";
-	}
-	else {
-		return "error:order:delete:" + response;
-	}
+	link::execute(request);
 }
 
 
-std::string order::show(std::string parameters) {
+System::Data::DataSet^ order::show(std::string parameters) {
 	// parameters: id_order OR id_client OR own
 
 	std::string request, response;
 
-	if (parameters == "own") {
-		response = "\n";
-		response += "id_order:" + get_id_order() + "\n";
-		response += "facturation_date:" + get_facturation_date() + "\n";
-		response += "delivery_date:" + get_eta_date() + "\n";
-		response += "paiment_number:" + get_paiment_number() + "\n";
-		response += "paiment_methode:" + get_paiment_methode() + "\n";
-		response += "comercial_marge:" + get_comercial_marge() + "\n";
-		response += "comercial_reduction:" + get_comercial_reduction() + "\n";
-		response += "tva:" + get_tva() + "\n";
-		response += "id_client:" + get_id_client() + "\n";
-		response += "items:" + get_items() + "\n";
-		return "order:show:" + response;
-
-	}
-	else {
-		// check if parameters is an integer
-		for (int i = 0; i < parameters.length(); i++) {
-			if (!isdigit(parameters[i])) {
-				return "error:order:show:parameter_is_not_an_integer";// il est chokbar
-			}
+	// check if parameters is an integer
+	for (int i = 0; i < parameters.length(); i++) {
+		if (!isdigit(parameters[i])) {
+			return ;// il est chokbar
 		}
-		request = "SELECT * FROM [dbo].[FACTURE] WHERE FAC_ID_FACTURE = '" + parameters + "';";
-		response = link::get_first_item(link::execute(request));
 	}
-
-	return "order:show:" + response;
+	request = "SELECT * FROM [dbo].[FACTURE] WHERE FAC_ID_FACTURE = '" + parameters + "';";
+	response = link::get_first_item(link::execute(request));
 }

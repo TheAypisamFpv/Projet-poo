@@ -19,11 +19,11 @@ class link {
 public:
 	link() {};
 	~link() {};
-	string hub(string table, string command, string parameters);
-	string create(string parameters) {};
-	string modify(string parameters) {};
-	string delete_(string parameters) {};
-	string show(string parameters) {};
+	System::Data::DataSet^ hub(string table, string command, string parameters);
+	void create(string parameters) {};
+	void modify(string parameters) {};
+	void delete_(string parameters) {};
+	System::Data::DataSet^ show(string parameters) {};
 	System::Data::DataSet^ execute(string request);
 	string get_first_item(System::Data::DataSet^ data);
 };

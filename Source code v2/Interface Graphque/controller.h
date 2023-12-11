@@ -14,7 +14,7 @@ public:
 	Controller() {};
 	~Controller() {};
 	string SQL_check(string request);
-	string Table(string request);
-	string Stats(string request);
-	string csv_input(string csv);
+	System::Data::DataSet^ Table(System::String^ request);
+	System::Data::DataSet^ Stats(System::String^ request);
+	System::Data::DataSet^ csv_input(string csv);
 };

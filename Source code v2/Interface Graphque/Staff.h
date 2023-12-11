@@ -31,10 +31,10 @@ public:
 	~staff() {};
 
 
-	string create(string paramter);
-	string modify(string paramter);
-	string delete_(string paramter);
-	string show(string paramter);
+	void create(string paramter);
+	void modify(string paramter);
+	void delete_(string paramter);
+	System::Data::DataSet^ show(string paramter);
 
 	void set_id_staff(string id_staff) { this->id_staff = id_staff; };
 	void set_name(string name) { this->name = name; };
@@ -45,7 +45,7 @@ public:
 	void set_address(string address) { this->address = address; };
 	void set_id_superior(string id_superior) { this->id_superior = id_superior; };
 
-	string save_parameter() {
+	void save_parameter() {
 		// save all parameters to the database
 		// if id_staff is not set, create a new staff
 		// else modify the staff with the id_staff
@@ -55,22 +55,10 @@ public:
 		if (id_staff.empty()) {
 			// create a new staff
 			// get the id of the post
-			request = "SELECT [POS_ID_POSTE] FROM [dbo].[POSTE] WHERE POS_POSTE LIKE '" + job + "';";
-			response = link::get_first_item(link::execute(request));
-
-			// if the job does not exit, return an error
-			if (response.empty()) {
-				return "staff:job does not exist";
-			}
-
-
-
-			string job_id = response;
-
 			// create the staff
-			request = "INSERT INTO [dbo].[PERSONNEL] ([PER_NOM], [PER_PRENOM], [PER_TELEPHONE], [PER_DATE_EMBAUCHE], [PER_ID_SUPERIEUR], [POS_ID_POSTE]) VALUES ('" + name + "', '" + surname + "', '" + phone + "', '" + hiring_date + "', '" + id_superior + "', '" + job_id + "');";
-			response = link::get_first_item(link::execute(request));
-			return response;
+
+			request = "INSERT INTO [dbo].[PERSONNEL] ([PER_NOM], [PER_PRENOM], [PER_TELEPHONE], [PER_DATE_EMBAUCHE], [PER_ID_SUPERIEUR], [POS_ID_POSTE]) VALUES ('" + name + "', '" + surname + "', '" + phone + "', '" + hiring_date + "', '" + id_superior + "', '(SELECT[POS_ID_POSTE] FROM[dbo].[POSTE] WHERE POS_POSTE LIKE '" + job + "')');";
+			link::execute(request);
 		}
 		else {
 			// modify the staff
@@ -89,8 +77,7 @@ public:
 			request = request.substr(0, request.size() - 2);
 			// add the where clause
 			request += " WHERE [PER_ID_PERSONNEL] = '" + id_staff + "';";
-			response = link::get_first_item(link::execute(request));
-			return response;
+			link::execute(request);
 		}
 	}
 

@@ -32,10 +32,10 @@ public:
 		this->id_historique = "";
 	};
 
-	string create(string paramter);
-	string modify(string paramter);
-	string delete_(string paramter);
-	string show(string paramter);
+	void create(string paramter);
+	void modify(string paramter);
+	void delete_(string paramter);
+	System::Data::DataSet^ show(string paramter);
 
 
 	void set_id_compte(string id_compte) { this->id_compte = id_compte; };
