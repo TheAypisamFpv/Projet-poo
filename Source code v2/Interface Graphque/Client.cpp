@@ -35,7 +35,7 @@ void client::create(string parameter) {
 		return;
 	}
 
-	string address = parameter.substr(0, parameter.find(","));
+	string address = convert_date(parameter.substr(0, parameter.find(",")));
 	parameter.erase(0, parameter.find(",") + 1);
 	if (address == "") {
 		return;
@@ -87,7 +87,7 @@ void client::modify(string parameter) {
 	string phone = parameter.substr(0, parameter.find(","));
 	parameter.erase(0, parameter.find(",") + 1);
 
-	string address = parameter.substr(0, parameter.find(","));
+	string address = convert_date(parameter.substr(0, parameter.find(",")));
 	parameter.erase(0, parameter.find(",") + 1);
 
 	string birth_date = convert_date(parameter);
@@ -145,22 +145,35 @@ void client::delete_(string parameters) {
 
 
 System::Data::DataSet^ client::show(string parameters) {
-	// id_compte 
-	string response;
+	//numero_compte OR name,surname 
 	System::Data::DataSet^ void_;
-	// if parameters is "own", then show the client's own information (without sql request)
-	if (parameters == "own") {
-		parameters = this->id_compte;
-	}
 
-	// check if id_compte is correct (must be an integer)
-	for (int i = 0; i < this->id_compte.length(); i++) {
-		if (isdigit(this->id_compte[i]) == false) {
-			return void_;// il est chokbar
+	// check number of parameters
+	int number_of_parameters = count(parameters.begin(), parameters.end(), ',') + 1;
+	// if there is only one parameter, then it is the id_compte
+	if (number_of_parameters == 1) {
+		// check if id_compte is correct (must be an integer)
+		for (int i = 0; i < parameters.length(); i++) {
+			if (isdigit(parameters[i]) == false) {
+				return void_;// il est chokbar
+			}
 		}
-	}
 
-	// SQL request to show a client
-	string request = "SELECT * FROM COMPTE_CLIENT WHERE COMCLI_NUMERO_COMPTE = '" + parameters + "';";
-	return link::get(request, "COMPTE_CLIENT");
+		// SQL request to delete a client
+		string request = "SELECT * FROM COMPTE_CLIENT WHERE COMCLI_NUMERO_COMPTE = '" + parameters + "';";
+		return link::get(request, "COMPTE_CLIENT");
+	}
+	else if (number_of_parameters == 2) {
+		string name = parameters.substr(0, parameters.find(","));
+		parameters.erase(0, parameters.find(",") + 1);
+
+		string surname = parameters;
+
+		// SQL request to delete a client
+		string request = "SELECT * FROM COMPTE_CLIENT WHERE COMCLI_NOM = '" + name + "' AND COMCLI_PRENOM = '" + surname + "';";
+		return link::get(request, "COMPTE_CLIENT");
+	}
+	else {
+		return void_;// il est chokbar
+	}
 }

@@ -124,7 +124,7 @@ void order::delete_(std::string parameters) {
 
 
 System::Data::DataSet^ order::show(std::string parameters) {
-	// parameters: id_order OR id_client OR own
+	// parameters: id_order
 
 	std::string request, response;
 	System::Data::DataSet^ void_;
