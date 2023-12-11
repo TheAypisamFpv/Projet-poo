@@ -1,4 +1,4 @@
-#pragma once
+	#pragma once
 #include <string>
 #include "link.h"
 
@@ -58,7 +58,7 @@ public:
 			// create the staff
 
 			request = "INSERT INTO [dbo].[PERSONNEL] ([PER_NOM], [PER_PRENOM], [PER_TELEPHONE], [PER_DATE_EMBAUCHE], [PER_ID_SUPERIEUR], [POS_ID_POSTE]) VALUES ('" + name + "', '" + surname + "', '" + phone + "', '" + hiring_date + "', '" + id_superior + "', '(SELECT[POS_ID_POSTE] FROM[dbo].[POSTE] WHERE POS_POSTE LIKE '" + job + "')');";
-			link::execute(request, "PERSONNEL");
+			link::set(request);
 		}
 		else {
 			// modify the staff
@@ -77,7 +77,7 @@ public:
 			request = request.substr(0, request.size() - 2);
 			// add the where clause
 			request += " WHERE [PER_ID_PERSONNEL] = '" + id_staff + "';";
-			link::execute(request, "PERSONNEL");
+			link::set(request);
 		}
 	}
 

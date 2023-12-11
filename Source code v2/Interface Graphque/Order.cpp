@@ -119,7 +119,7 @@ void order::delete_(std::string parameters) {
 	}
 
 	string request = "DELETE FROM [dbo].[FACTURE] WHERE FAC_ID_FACTURE = '" + parameters + "';";
-	link::execute(request, "FACTURE");
+	link::set(request);
 }
 
 
@@ -136,5 +136,5 @@ System::Data::DataSet^ order::show(std::string parameters) {
 		}
 	}
 	request = "SELECT * FROM [dbo].[FACTURE] WHERE FAC_ID_FACTURE = '" + parameters + "';";
-	return link::execute(request,"FACTURE");
+	return link::get(request,"FACTURE");
 }

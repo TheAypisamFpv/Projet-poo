@@ -74,14 +74,16 @@ System::Data::DataSet^ Controller::Table(System::String^ request_) {
 
 
 
-string Controller::Stats(System::String^ request_) {
+System::Data::DataSet^ Controller::Stats(System::String^ request_) {
 	//						  arg1 :  arg2(param1,param2,...)
 	// normalized request : command:parameters
 	// exemple : total_purchases:cailloux (get total purchases of user cailloux)
 
+	link sql;
 
 	// convert System::String to std::string
 	string request = msclr::interop::marshal_as<std::string>(request_);
+	System::Data::DataSet^ result;
 
 	// check if there is an attempt to do an SQL injection
 	string SQL_chokbar = SQL_check(request);
@@ -90,11 +92,30 @@ string Controller::Stats(System::String^ request_) {
 	}
 
 
+	// get the first 8 characters of the request
+	string command = request.substr(0, 8);
+
+
 
 	//check request by checking if there is 1 ':' (2 arguments)
 	int argument_number = count(request.begin(), request.end(), ':') + 1;
 	if (argument_number != 2) {
 		return ""; // il est chokbar
+	}
+
+	// panier moyen
+	if (request == "cart:average") {
+		result = sql.get("SELECT AVG(FAC_PRIX) AS PrixMoyen FROM FACTURE", "FACTURE");
+	}
+	// chiffre d'affaire pour le mois (turnover:date)
+	else if (command == "turnover") {
+		// check if parameters is an integer
+		for (int i = 0; i < request.substr(9).length(); i++) {
+			if (!isdigit(request.substr(9)[i])) {
+				return ""; // il est chokbar
+			}
+		}
+		result = sql.get("SELECT SUM(FAC_PRIX) AS ChiffreAffaire FROM FACTURE WHERE MONTH(FAC_DATE_FACTURE) = " + request.substr(9), "FACTURE");
 	}
 
 

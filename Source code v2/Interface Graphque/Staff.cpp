@@ -104,7 +104,7 @@ void staff::delete_(string parameters) {
 	}
 
 	string request = "DELETE FROM staff WHERE id_staff = '" + parameters + "';";
-	link::execute(request, "STAFF");
+	link::set(request);
 }
 
 
@@ -112,5 +112,5 @@ System::Data::DataSet^ staff::show(string parameters) {
 	// name,surname
 	// SQL request to show a staff
 	string request = "SELECT * FROM staff WHERE name = '" + parameters.substr(0, parameters.find(":")) + "' AND surname = '" + parameters.substr(parameters.find(":") + 1) + "';";
-	return link::execute(request, "STAFF");
+	return link::get(request, "STAFF");
 }

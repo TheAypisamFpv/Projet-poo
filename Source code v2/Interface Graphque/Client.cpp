@@ -138,7 +138,7 @@ void client::delete_(string parameters) {
 
 		// SQL request to delete a client
 		request = "DELETE FROM COMPTE_CLIENT WHERE COMCLI_NUMERO_COMPTE = '" + parameters + "';";
-		link::execute(request, "COMPTE_CLIENT");
+		link::set(request);
 	}
 }
 
@@ -161,5 +161,5 @@ System::Data::DataSet^ client::show(string parameters) {
 
 	// SQL request to show a client
 	string request = "SELECT * FROM COMPTE_CLIENT WHERE COMCLI_NUMERO_COMPTE = '" + parameters + "';";
-	return link::execute(request, "COMPTE_CLIENT");
+	return link::get(request, "COMPTE_CLIENT");
 }

@@ -14,13 +14,22 @@ NS_Comp_Data::CLcad::CLcad(void)
 
 	this->oCmd->CommandType = System::Data::CommandType::Text;
 }
-System::Data::DataSet^ NS_Comp_Data::CLcad::exec(System::String^ sSql, System::String^ sDatTableName)
+
+System::Data::DataSet^ NS_Comp_Data::CLcad::get(System::String^ sSQL, System::String^ sTable)
 {
 	this->oDS->Clear();
+	this->sSQL = sSQL;
+	this->oCmd->CommandText = this->sSQL;
+	this->oDA->SelectCommand = this->oCmd;
+	this->oDA->Fill(this->oDS, sTable);
+}
+
+void NS_Comp_Data::CLcad::set(System::String^ sSql)
+{
 	this->sSQL = sSql;
 	this->oCmd->CommandText = this->sSQL;
 	this->oDA->SelectCommand = this->oCmd;
-	this->oDA->Fill(this->oDS, sDatTableName);
-
-	return this->oDS;
+	this->oCnx->Open();
+	this->oCmd->ExecuteNonQuery();
+	this->oCnx->Close();
 }
