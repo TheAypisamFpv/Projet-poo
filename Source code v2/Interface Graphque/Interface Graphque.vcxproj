@@ -133,6 +133,7 @@
     <ClCompile Include="Order.cpp" />
     <ClCompile Include="Staff.cpp" />
     <ClCompile Include="Stock.cpp" />
+    <ClCompile Include="testUnitaire.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CLcad.h" />
