@@ -23,10 +23,10 @@ public:
 	};
 	~stock() {};
 
-	string create(string paramter);
-	string modify(string paramter);
-	string delete_(string paramter);
-	string show(string paramter);
+	void create(string paramter);
+	void modify(string paramter);
+	void delete_(string paramter);
+	System::Data::DataSet^ show(string paramter);
 
 	// getters
 	string get_product_name() {

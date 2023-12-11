@@ -9,7 +9,7 @@
 
 using namespace std;
 
-string link::hub(string table, string command, string parameters) {
+System::Data::DataSet^ link::hub(string table, string command, string parameters) {
 	if (table == "client") {
 		client c;
 		if (command == "create") {
@@ -23,9 +23,6 @@ string link::hub(string table, string command, string parameters) {
 		}
 		else if (command == "show") {
 			return c.show(parameters);
-		}
-		else {
-			return "Error:client:command not found";// il est chokbar
 		}
 	}
 	else if (table == "staff") {
@@ -42,9 +39,6 @@ string link::hub(string table, string command, string parameters) {
 		else if (command == "show") {
 			return s.show(parameters);
 		}
-		else {
-			return "Error:staff:command not found";// il est chokbar
-		}
 	}
 	else if (table == "order") {
 		order o;
@@ -59,9 +53,6 @@ string link::hub(string table, string command, string parameters) {
 		}
 		else if (command == "show") {
 			return o.show(parameters);
-		}
-		else {
-			return "Error:order:command not found";// il est chokbar
 		}
 	}
 	else if (table == "stock") {
@@ -78,12 +69,6 @@ string link::hub(string table, string command, string parameters) {
 		else if (command == "show") {
 			return s.show(parameters);
 		}
-		else {
-			return "Error:stock:command not found";// il est chokbar
-		}
-	}
-	else {
-		return "Error: table not found";// il est chokbar
 	}
 }
 

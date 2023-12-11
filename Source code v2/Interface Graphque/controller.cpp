@@ -1,5 +1,7 @@
 #include "controller.h"
 #include "link.h"
+#include <string>
+#include <msclr\marshal_cppstd.h>
 
 string Controller::SQL_check(string request) {
 	// check if there is an attempt to do an SQL injection
@@ -29,16 +31,18 @@ string Controller::SQL_check(string request) {
 
 
 
-string Controller::Table(string request) {
+System::Data::DataSet^ Controller::Table(System::String^ request_) {
 	//						   arg1   :  arg2 :  arg3(param1,param2,...)
 	// normalized request : table:command:parameters
 	// exemple : staff:delete:cailloux,rock (delete staff name rock cailloux)
 
+	// convert System::String to std::string
+	string request = msclr::interop::marshal_as<std::string>(request_);
 
 	// check if there is an attempt to do an SQL injection
 	string SQL_chokbar = SQL_check(request);
 	if (SQL_chokbar != "ok") {
-		return SQL_chokbar; // il est chokbar
+		return; // il est chokbar
 	}
 
 
@@ -46,7 +50,7 @@ string Controller::Table(string request) {
 	//check request by checking if there is 2 ':' (3 arguments)
 	int argument_number = count(request.begin(), request.end(), ':') + 1;
 	if (argument_number != 3) {
-		return "error:invalid_argument:wrong_number_of_arguments, excepted 3 but got " + to_string(argument_number); // il est chokbar
+		return ; // il est chokbar
 	}
 	// split request
 	string table = request.substr(0, request.find(":"));
@@ -56,7 +60,7 @@ string Controller::Table(string request) {
 
 	// check if none is empty
 	if (table.empty() || command.empty() || parameters.empty()) {
-		return "error:invalid_argument:empty_argument"; // il est chokbar
+		return; // il est chokbar
 	}
 
 
@@ -67,15 +71,18 @@ string Controller::Table(string request) {
 
 
 
-string Controller::Stats(string request) {
+System::Data::DataSet^ Controller::Stats(System::String^ request_) {
 	//						  arg1 :  arg2(param1,param2,...)
 	// normalized request : command:parameters
 	// exemple : total_purchases:cailloux (get total purchases of user cailloux)
 
+	// convert System::String to std::string
+	string request = msclr::interop::marshal_as<std::string>(request_);
+
 	// check if there is an attempt to do an SQL injection
 	string SQL_chokbar = SQL_check(request);
 	if (SQL_chokbar != "ok") {
-		return SQL_chokbar; // il est chokbar
+		return; // il est chokbar
 	}
 
 
@@ -84,23 +91,19 @@ string Controller::Stats(string request) {
 	//check request by checking if there is 1 ':' (2 arguments)
 	int argument_number = count(request.begin(), request.end(), ':') + 1;
 	if (argument_number != 2) {
-		return "error:invalid_argument:wrong_number_of_arguments, excepted 2 but got " + to_string(argument_number); // il est chokbar
+		return ; // il est chokbar
 	}
 
 
-
-
-
-	return data;
 }
 
 
-string Controller::csv_input(string csv) {
+System::Data::DataSet^ Controller::csv_input(string csv) {
 	// input csv file into database
 
 	// check if there is an attempt to do an SQL injection
 	string SQL_chokbar = SQL_check(csv);
 	if (SQL_chokbar != "ok") {
-		return SQL_chokbar; // il est chokbar
+		return; // il est chokbar
 	}
 }

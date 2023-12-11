@@ -137,6 +137,7 @@
   <ItemGroup>
     <ClInclude Include="CLcad.h" />
     <ClInclude Include="Client.h" />
+    <ClInclude Include="controller.h" />
     <ClInclude Include="link.h" />
     <ClInclude Include="MyForm.h">
       <FileType>CppForm</FileType>
