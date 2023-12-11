@@ -9,7 +9,7 @@ using namespace std;
 class Controller {
 private:
 	string forbidden_characters = "*';\""; // list of forbidden characters
-	string forbidden_words = "select,drop"; // list of forbidden words
+	string forbidden_words[5] = { "drop","delete","update","insert","alter" }; // list of forbidden words
 public:
 	Controller() {};
 	~Controller() {};

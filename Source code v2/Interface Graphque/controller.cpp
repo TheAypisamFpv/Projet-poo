@@ -11,11 +11,10 @@ string Controller::SQL_check(string request) {
 	transform(temp.begin(), temp.end(), temp.begin(), ::tolower);
 
 	// check for forbidden words
-	for (int i = 0; i < count(forbidden_words.begin(), forbidden_words.end(), ','); i++) {
-		if (temp.find(forbidden_words.substr(0, forbidden_words.find(","))) != string::npos) {
+	for (int i = 0; i < 5; i++) {
+		if (temp.find(forbidden_words[i]) != string::npos) {
 			return "error:SQL_injection:forbidden_word (Nuh uh)"; // il est chokbar
 		}
-		forbidden_words = forbidden_words.substr(forbidden_words.find(",") + 1);
 	}
 
 
