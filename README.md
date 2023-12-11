@@ -66,3 +66,41 @@ En selectionnant `supprimer`, les information neccesaire a la suppression d'un P
   <a href="" rel="noopener">
  <img src="https://github.com/TheAypisamFpv/Projet-poo/blob/main/images/how_to_use/table_personnel_suppr.png" alt="table_personnel_suppr"></a>
 </p>
+
+
+
+
+# Stats
+Dans la selection de statistique, vous pouvez selection l'action a faire (`Calcul`,`Identification`,`Simulation`).
+</p>
+<p align="center"> 
+  <a href="" rel="noopener">
+ <img src="https://github.com/TheAypisamFpv/Projet-poo/blob/main/images/how_to_use/stats_choix.png" alt="stats_choix"></a>
+</p>
+
+
+## Calcul
+Dans la selection de `Calcul`, vous pouvez selection l'action a faire (`panier moyen`,`Chiffre d'affaire`,`achat client`,`valeur commercial stock`,`valeur achat stock`).
+</p>
+<p align="center"> 
+  <a href="" rel="noopener">
+ <img src="https://github.com/TheAypisamFpv/Projet-poo/blob/main/images/how_to_use/stats_calc_choix.png" alt="stats_calc_choix"></a>
+</p>
+
+
+## Identification
+Dans la selection de `Identification`, vous pouvez selection l'action a faire (`produit a reaprovisionner`,`produit plus vendu`,`produit moins vendu`).
+</p>
+<p align="center"> 
+  <a href="" rel="noopener">
+ <img src="https://github.com/TheAypisamFpv/Projet-poo/blob/main/images/how_to_use/stats_ident_choix.png" alt="stats_ident_choix"></a>
+</p>
+
+
+## Simulation
+Dans la selection de `Simulation`, vous pouvez entrez les information pour faire une simulation.
+</p>
+<p align="center"> 
+  <a href="" rel="noopener">
+ <img src="https://github.com/TheAypisamFpv/Projet-poo/blob/main/images/how_to_use/stats_simul.png" alt="stats_simul"></a>
+</p>
