@@ -13,7 +13,7 @@ Ce projet a pour but de créer une application de gestion d'entreprise avec conn
 
 <h2 align="center"> Utilisation de l'application </h2>
 
-# [Code source du projet](Source code v2/Interface Graphque)
+# [Code source du projet](https://github.com/TheAypisamFpv/Projet-poo/tree/main/Source%20code%20v2/Interface%20Graphque)
 
 Après avoir ouvert l'application, vous pouvez sélectionner le fait de faire un changement à une `table` ou faire des `statistiques`.
 </p>
