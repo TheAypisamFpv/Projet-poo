@@ -23,6 +23,6 @@ public:
 	void modify(string parameters) {};
 	void delete_(string parameters) {};
 	System::Data::DataSet^ show(string parameters) {};
-	System::Data::DataSet^ execute(string request);
+	System::Data::DataSet^ execute(string request, string tablename);
 	string get_first_item(System::Data::DataSet^ data);
 };

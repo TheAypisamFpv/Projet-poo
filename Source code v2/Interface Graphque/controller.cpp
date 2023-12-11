@@ -74,12 +74,10 @@ System::Data::DataSet^ Controller::Table(System::String^ request_) {
 
 
 
-System::Data::DataSet^ Controller::Stats(System::String^ request_) {
+string Controller::Stats(System::String^ request_) {
 	//						  arg1 :  arg2(param1,param2,...)
 	// normalized request : command:parameters
 	// exemple : total_purchases:cailloux (get total purchases of user cailloux)
-
-	System::Data::DataSet^ void_;
 
 
 	// convert System::String to std::string
@@ -88,16 +86,15 @@ System::Data::DataSet^ Controller::Stats(System::String^ request_) {
 	// check if there is an attempt to do an SQL injection
 	string SQL_chokbar = SQL_check(request);
 	if (SQL_chokbar != "ok") {
-		return void_; // il est chokbar
+		return ""; // il est chokbar
 	}
 
 
-	string data = "yousk2";
 
 	//check request by checking if there is 1 ':' (2 arguments)
 	int argument_number = count(request.begin(), request.end(), ':') + 1;
 	if (argument_number != 2) {
-		return void_; // il est chokbar
+		return ""; // il est chokbar
 	}
 
 

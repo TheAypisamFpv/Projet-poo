@@ -37,7 +37,7 @@ public:
 		if (this->product_name.empty()) {
 			// get the name of the product
 			string request = "SELECT [PRO_NOM_PRODUIT] FROM [dbo].[PRODUIT] WHERE PRO_ID_PRODUIT = " + get_id_product() + ";";
-			string response = link::get_first_item(link::execute(request));
+			string response = link::get_first_item(link::execute(request, "PRODUIT"));
 
 			// set the product_name
 			this->product_name = response;
@@ -49,7 +49,7 @@ public:
 		if (this->id_product.empty()) {
 			// get the id of the product
 			string request = "SELECT [PRO_ID_PRODUIT] FROM [dbo].[PRODUIT] WHERE PRO_NOM_PRODUIT LIKE '" + get_product_name() + "';";
-			string response = link::get_first_item(link::execute(request));
+			string response = link::get_first_item(link::execute(request, "PRODUIT"));
 
 			// set the id_product
 			this->id_product = response;
@@ -65,7 +65,7 @@ public:
 		if (this->wharehouse_name.empty()) {
 			// get the name of the wharehouse
 			string request = "SELECT [MAG_NOM] FROM [dbo].[MAGASIN] WHERE MAG_ID_MAGASIN = " + get_id_wharehouse() + ";";
-			string response = link::get_first_item(link::execute(request));
+			string response = link::get_first_item(link::execute(request, "MAGASIN"));
 
 			// set the wharehouse_name
 			this->wharehouse_name = response;
@@ -77,7 +77,7 @@ public:
 		if (this->id_wharehouse.empty()) {
 			// get the id of the wharehouse
 			string request = "SELECT [MAG_ID_MAGASIN] FROM [dbo].[MAGASIN] WHERE MAG_NOM LIKE '" + get_wharehouse_name() + "';";
-			string response = link::get_first_item(link::execute(request));
+			string response = link::get_first_item(link::execute(request, "MAGASIN"));
 
 			// set the id_wharehouse
 			this->id_wharehouse = response;
@@ -89,7 +89,7 @@ public:
 		if (this->quantity.empty()) {
 			// get the quantity
 			string request = "SELECT [STO_QUANTITE] FROM [dbo].[STOCK] WHERE PRO_ID_PRODUIT = " + get_id_product() + " AND MAG_ID_MAGASIN = " + get_id_wharehouse() + ";";
-			string response = link::get_first_item(link::execute(request));
+			string response = link::get_first_item(link::execute(request, "STOCK"));
 
 			// set the quantity
 			this->quantity = response;
@@ -109,7 +109,7 @@ public:
 		if (id_product.empty()) {
 			// get the id of the product
 			request = "SELECT [PRO_ID_PRODUIT] FROM [dbo].[PRODUIT] WHERE PRO_NOM_PRODUIT LIKE '" + product_name + "';";
-			response = link::get_first_item(link::execute(request));
+			response = link::get_first_item(link::execute(request, "PRODUIT"));
 
 			// set the id_product
 			this->id_product = response;
@@ -117,7 +117,7 @@ public:
 		if (id_wharehouse.empty()) {
 			// get the id of the wharehouse
 			request = "SELECT [MAG_ID_MAGASIN] FROM [dbo].[MAGASIN] WHERE MAG_NOM LIKE '" + wharehouse_name + "';";
-			response = link::get_first_item(link::execute(request));
+			response = link::get_first_item(link::execute(request, "MAGASIN"));
 
 			// set the id_wharehouse
 			this->id_wharehouse = response;
@@ -125,17 +125,17 @@ public:
 
 		// check if a stock already exists with the id_product and id_wharehouse
 		request = "SELECT [STO_QUANTITE] FROM [dbo].[STOCK] WHERE PRO_ID_PRODUIT = " + id_product + " AND MAG_ID_MAGASIN = " + id_wharehouse + ";";
-		response = link::get_first_item(link::execute(request));
+		response = link::get_first_item(link::execute(request, "STOCK"));
 
 		if (response.empty()) {
 			// create a new stock
 			request = "INSERT INTO [dbo].[STOCK] ([PRO_ID_PRODUIT], [MAG_ID_MAGASIN], [STO_QUANTITE]) VALUES (" + id_product + ", " + id_wharehouse + ", " + quantity + ");";
-			response = link::get_first_item(link::execute(request));
+			response = link::get_first_item(link::execute(request, "STOCK"));
 		}
 		else {
 			// modify the quantity
 			request = "UPDATE [dbo].[STOCK] SET [STO_QUANTITE] = " + quantity + " WHERE PRO_ID_PRODUIT = " + id_product + " AND MAG_ID_MAGASIN = " + id_wharehouse + ";";
-			response = link::get_first_item(link::execute(request));
+			response = link::get_first_item(link::execute(request, "STOCK"));
 		}
 
 		return response;

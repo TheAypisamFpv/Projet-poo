@@ -70,7 +70,7 @@ void stock::delete_(string parameters) {
 
 	string request, response;
 	request = "DELETE FROM [dbo].[stock] WHERE PRO_ID_PRODUIT = " + get_id_product() + " AND MAG_ID_MAGASIN = " + get_id_wharehouse() + ";";
-	link::execute(request);
+	link::execute(request, "STOCK");
 }
 
 
@@ -97,6 +97,6 @@ System::Data::DataSet^ stock::show(string parameters) {
 
 		string request, response;
 		request = "SELECT * FROM [dbo].[STOCK] WHERE PRO_ID_PRODUIT = " + get_id_product() + " AND MAG_ID_MAGASIN = " + get_id_wharehouse() + ";";
-		return link::execute(request);
+		return link::execute(request, "STOCK");
 	}
 }
