@@ -21,24 +21,13 @@ void staff::create(string parameters) {
 	string phone = parameters.substr(0, parameters.find(","));
 	parameters.erase(0, parameters.find(",") + 1);
 
-	string hiring_date = parameters.substr(0, parameters.find(","));
+	string hiring_date = convert_date(parameters.substr(0, parameters.find(",")));
 	parameters.erase(0, parameters.find(",") + 1);
-
-	for (char& c : hiring_date) {
-		if (c == '/') {
-			c = '-'; // Remplacer '/' par '-'
-		}
-	}
-
-	hiring_date = "2023-10-09";
-
-
 
 
 	string job = parameters.substr(0, parameters.find(","));
 	parameters.erase(0, parameters.find(",") + 1);
 
-	job = "technicien";
 
 	string address = parameters.substr(0, parameters.find(","));
 	parameters.erase(0, parameters.find(",") + 1);
@@ -81,7 +70,7 @@ void staff::modify(string parameters) {
 	string phone = parameters.substr(0, parameters.find(","));
 	parameters.erase(0, parameters.find(",") + 1);
 
-	string hiring_date = parameters.substr(0, parameters.find(","));
+	string hiring_date = convert_date(parameters.substr(0, parameters.find(",")));
 	parameters.erase(0, parameters.find(",") + 1);
 	
 

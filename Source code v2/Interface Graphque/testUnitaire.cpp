@@ -1,4 +1,5 @@
 #include "controller.h"
+#include "link.h"
 // test the controller
 
 int main()
@@ -8,7 +9,6 @@ int main()
 
 	int passed = 0;
 	int failed = 0;
-
 
 
 	Controller controller;
@@ -68,6 +68,26 @@ int main()
 		std::cout << "failed X" << std::endl;
 		failed++;
 	}
+
+
+	
+
+	// test 4: test date conversion
+	std::cout << endl << "Test 4: test date conversion : ";
+	// get current date
+	string date = "11/12/2023";
+	link link;
+
+	if (link.convert_date(date) == "2023-12-11") {
+		std::cout << "passed V" << std::endl;
+		passed++;
+	}
+	else
+	{
+		std::cout << "failed X" << std::endl;
+		failed++;
+	}
+
 
 	// show the number of passed and failed tests
 	std::cout << endl << passed << " test passed -- " << failed << " failed test" << std::endl;

@@ -13,10 +13,10 @@ void order::create(std::string parameters) {
 	std::string id_order = parameters.substr(0, parameters.find(","));
 	parameters.erase(0, parameters.find(",") + 1);
 
-	std::string facturation_date = parameters.substr(0, parameters.find(","));
+	std::string facturation_date = convert_date(parameters.substr(0, parameters.find(",")));
 	parameters.erase(0, parameters.find(",") + 1);
 
-	std::string delivery_date = parameters.substr(0, parameters.find(","));
+	std::string delivery_date = convert_date(parameters.substr(0, parameters.find(",")));
 	parameters.erase(0, parameters.find(",") + 1);
 
 	std::string paiment_number = parameters.substr(0, parameters.find(","));
@@ -67,10 +67,10 @@ void order::modify(std::string parameters) {
 	std::string id_order = parameters.substr(0, parameters.find(","));
 	parameters.erase(0, parameters.find(",") + 1);
 
-	std::string facturation_date = parameters.substr(0, parameters.find(","));
+	std::string facturation_date = convert_date(parameters.substr(0, parameters.find(",")));
 	parameters.erase(0, parameters.find(",") + 1);
 
-	std::string delivery_date = parameters.substr(0, parameters.find(","));
+	std::string delivery_date = convert_date(parameters.substr(0, parameters.find(",")));
 	parameters.erase(0, parameters.find(",") + 1);
 
 	std::string paiment_number = parameters.substr(0, parameters.find(","));

@@ -41,10 +41,11 @@ void client::create(string parameter) {
 		return;
 	}
 
-	string birth_date = parameter;
+	string birth_date = convert_date(parameter);
 	if (birth_date == "") {
 		return;
 	}
+
 
 
 	// check if adresse is correct TODO
@@ -89,7 +90,7 @@ void client::modify(string parameter) {
 	string address = parameter.substr(0, parameter.find(","));
 	parameter.erase(0, parameter.find(",") + 1);
 
-	string birth_date = parameter;
+	string birth_date = convert_date(parameter);
 
 	//check if id_client is correct (must be an integer)
 
