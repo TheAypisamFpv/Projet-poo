@@ -98,11 +98,11 @@ public:
 				quantity = this->items.substr(this->items.find("-", 0) + 1, this->items.find("\n", 0) - this->items.find("-", 0) - 1);
 
 				// get the price
-				request = "SELECT PRO_PRIX FROM PRODUIT WHERE PRO_NOM_PRODUIT LIKE '" + item_name + "'";
+				request = "SELECT PRO_PRIX FROM PRODUIT WHERE LOWER(PRO_NOM_PRODUIT) LIKE LOWER(%'" + item_name + "'%)";
 				price = link::get_first_item(link::get(request, "PRODUIT"));
 
 				// get the item id
-				request = "SELECT PRO_ID_PRODUIT FROM PRODUIT WHERE PRO_NOM_PRODUIT LIKE '" + item_name + "'";
+				request = "SELECT PRO_ID_PRODUIT FROM PRODUIT WHERE LOWER(PRO_NOM_PRODUIT) LIKE LOWER(%'" + item_name + "'%)";
 				id_item = link::get_first_item(link::get(request, "PRODUIT"));
 
 				// add the item to the table ACHAT

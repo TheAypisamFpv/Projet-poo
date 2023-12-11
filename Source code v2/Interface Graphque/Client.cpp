@@ -170,7 +170,7 @@ System::Data::DataSet^ client::show(string parameters) {
 		string surname = parameters;
 
 		// SQL request to delete a client
-		string request = "SELECT * FROM COMPTE_CLIENT WHERE COMCLI_NOM = '" + name + "' AND COMCLI_PRENOM = '" + surname + "';";
+		string request = "SELECT * FROM COMPTE_CLIENT WHERE LOWER(COMCLI_NOM) LIKE LOWER(%'" + name + "'%) AND LOWER(COMCLI_PRENOM) LIKE LOWER(%'" + surname + "'%);";
 		return link::get(request, "COMPTE_CLIENT");
 	}
 	else {

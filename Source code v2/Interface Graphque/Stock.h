@@ -48,7 +48,7 @@ public:
 	string get_id_product() {
 		if (this->id_product.empty()) {
 			// get the id of the product
-			string request = "SELECT [PRO_ID_PRODUIT] FROM [dbo].[PRODUIT] WHERE PRO_NOM_PRODUIT LIKE '" + get_product_name() + "';";
+			string request = "SELECT [PRO_ID_PRODUIT] FROM [dbo].[PRODUIT] WHERE LOWER(PRO_NOM_PRODUIT) LIKE LOWER(%'" + get_product_name() + "'%);";
 			string response = link::get_first_item(link::get(request, "PRODUIT"));
 
 			// set the id_product
@@ -76,7 +76,7 @@ public:
 	string get_id_wharehouse() {
 		if (this->id_wharehouse.empty()) {
 			// get the id of the wharehouse
-			string request = "SELECT [MAG_ID_MAGASIN] FROM [dbo].[MAGASIN] WHERE MAG_NOM LIKE '" + get_wharehouse_name() + "';";
+			string request = "SELECT [MAG_ID_MAGASIN] FROM [dbo].[MAGASIN] WHERE LOWER(MAG_NOM LIKE) LOWER('%" + get_wharehouse_name() + "%');";
 			string response = link::get_first_item(link::get(request, "MAGASIN"));
 
 			// set the id_wharehouse
@@ -108,7 +108,7 @@ public:
 
 		if (id_product.empty()) {
 			// get the id of the product
-			request = "SELECT [PRO_ID_PRODUIT] FROM [dbo].[PRODUIT] WHERE PRO_NOM_PRODUIT LIKE '" + product_name + "';";
+			request = "SELECT [PRO_ID_PRODUIT] FROM [dbo].[PRODUIT] WHERE SELECT(PRO_NOM_PRODUIT) LIKE LOWER(%'" + product_name + "'%);";
 			response = link::get_first_item(link::get(request, "PRODUIT"));
 
 			// set the id_product
@@ -116,7 +116,7 @@ public:
 		}
 		if (id_wharehouse.empty()) {
 			// get the id of the wharehouse
-			request = "SELECT [MAG_ID_MAGASIN] FROM [dbo].[MAGASIN] WHERE MAG_NOM LIKE '" + wharehouse_name + "';";
+			request = "SELECT [MAG_ID_MAGASIN] FROM [dbo].[MAGASIN] WHERE LOWER(MAG_NOM) LIKE LOWER(%'" + wharehouse_name + "'%);";
 			response = link::get_first_item(link::get(request, "MAGASIN"));
 
 			// set the id_wharehouse
