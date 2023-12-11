@@ -13,6 +13,7 @@ namespace NS_Comp_Data
 		System::Data::DataSet^ oDS;
 	public:
 		CLcad(void);
-		System::Data::DataSet^ exec(System::String^, System::String^);
+		System::Data::DataSet^ get(System::String^, System::String^);
+		void set(System::String^);
 	};
 }

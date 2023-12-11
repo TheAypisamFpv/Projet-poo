@@ -74,16 +74,22 @@ System::Data::DataSet^ link::hub(string table, string command, string parameters
 	return void_;
 }
 
-System::Data::DataSet^ link::execute(string request, string tablename) {
+System::Data::DataSet^ link::get(string request, string tablename) {
 
 	NS_Comp_Data::CLcad^ oCLcad = gcnew NS_Comp_Data::CLcad();
 	System::String^ request2 = gcnew System::String(request.c_str());
 
 	System::String^ tablename2 = gcnew System::String(tablename.c_str());
 
-	return oCLcad->exec(request2, tablename2);
+	return oCLcad->get(request2, tablename2);
 }
 
+void link::set(string request) {
+	NS_Comp_Data::CLcad^ oCLcad = gcnew NS_Comp_Data::CLcad();
+	System::String^ request2 = gcnew System::String(request.c_str());
+
+	oCLcad->set(request2);
+}
 
 string link::get_first_item(System::Data::DataSet^ data) {
 	return msclr::interop::marshal_as<std::string>(data->Tables[0]->Rows[0]->ItemArray[0]->ToString());

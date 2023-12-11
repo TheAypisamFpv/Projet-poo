@@ -59,23 +59,23 @@ public:
 			// create a new id that is not already in the database
 			// id_compte is a 6 digit number
 			request = "SELECT top 1 COMCLI_NUMERO_COMPTE FROM COMPTE_CLIENT order by COMCLI_NUMERO_COMPTE desc;";
-			response = link::get_first_item(link::execute(request, "COMPTE_CLIENT"));
+			response = link::get_first_item(link::get(request, "COMPTE_CLIENT"));
 			id_compte = to_string(stoi(response) + 1);
 
 			request = "INSERT INTO [dbo].[COMPTE_CLIENT] ([COMCLI_NUMERO_COMPTE], [COMCLI_NOM], [COMCLI_PRENOM], [COMCLI_POINT], [COMCLI_MAIL], [COMCLI_TELEPHONE], [COMCLI_DATE_NAISSANCE]) VALUES ('" + id_compte + "', '" + name + "', '" + surname + "', '" + points + "', '" + mail + "', '" + phone + "', '" + birth_date + "');";
-			response = link::get_first_item(link::execute(request, "COMPTE_CLIENT"));
+			link::set(request);
 
 			// add the adresse
 			// get the DB id of the client
 			request = "SELECT top 1 COMCLI_ID_COMPTE FROM COMPTE_CLIENT order by COMCLI_ID_COMPTE desc;";
-			response = link::get_first_item(link::execute(request, "COMPTE_CLIENT"));
+			response = link::get_first_item(link::get(request, "COMPTE_CLIENT"));
 			string id = response;
 
 			// insert the adresse
 			//adresse = "adresse:departement"
 			string departement = address.substr(address.find(":") + 1, address.size());
 			request = "INSERT INTO [dbo].[ADRESSE] ([ADR_ADRESSE], [ADR_DEPARTEMENT], [COMCLI_ID_COMPTE], [PER_ID_PERSONNEL]) VALUES ('" + address + "', '" + departement + "', '" + id + "', '1');";
-			link::execute(request, "ADRESSE");
+			link::set(request);
 		}
 		else {
 			// modify only the parameters that are not empty
@@ -88,7 +88,7 @@ public:
 			if (!birth_date.empty()) { request += "COMCLI_DATE_NAISSANCE = '" + birth_date + "', "; };
 			request = request.substr(0, request.size() - 2);
 			request += " WHERE COMCLI_NUMERO_COMPTE = '" + id_compte + "';";
-			response = link::get_first_item(link::execute(request, "COMPTE_CLIENT"));
+			link::set(request);
 
 			// modify the adresse
 			//adresse = "adresse:departement"
@@ -99,7 +99,7 @@ public:
 			request = request.substr(0, request.size() - 2);
 			request += " WHERE COMCLI_ID_COMPTE = '" + id_compte + "';";
 
-			link::execute(request, "ADRESSE");
+			link::set(request);
 		}
 	}
 
