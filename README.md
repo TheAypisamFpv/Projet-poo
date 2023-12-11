@@ -104,3 +104,13 @@ Dans la sélection de `Simulation`, vous pouvez entrer les informations pour fai
   <a href="" rel="noopener">
  <img src="https://github.com/TheAypisamFpv/Projet-poo/blob/main/images/how_to_use/stats_simul.png" alt="stats_simul"></a>
 </p>
+
+
+# Test Unitaire
+Ce test Unitaire test les fonction `create`, `modify`, `delete`, `show` d'un client et `convert_date`
+* `convert_date` permet de convertire une date en `dd/mm/yyyy` en `yyyy-mm-dd` pour être accepter dans une requête SQL.
+</p>
+<p align="center"> 
+  <a href="" rel="noopener">
+ <img src="https://github.com/TheAypisamFpv/Projet-poo/blob/main/images/testUnits.png" alt="testUnits"></a>
+</p>
