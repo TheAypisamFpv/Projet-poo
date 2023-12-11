@@ -2,7 +2,7 @@
 
 using namespace std;
 
-string order::create(string parameters) {
+std::string order::create(std::string parameters) {
 	// parameters: id_order,facturation_date,delivery_date,paiment_number,paiment_methode,comercial_marge,comercial_reduction,tva,id_client,items
 
 	int number_of_parameters = count(parameters.begin(), parameters.end(), ',') + 1;
@@ -10,34 +10,34 @@ string order::create(string parameters) {
 		return "error:order:create:wrong_number_of_parameters, expected 10 but got " + to_string(number_of_parameters);// il est chokbar
 	}
 
-	string id_order = parameters.substr(0, parameters.find(","));
+	std::string id_order = parameters.substr(0, parameters.find(","));
 	parameters.erase(0, parameters.find(",") + 1);
 
-	string facturation_date = parameters.substr(0, parameters.find(","));
+	std::string facturation_date = parameters.substr(0, parameters.find(","));
 	parameters.erase(0, parameters.find(",") + 1);
 
-	string delivery_date = parameters.substr(0, parameters.find(","));
+	std::string delivery_date = parameters.substr(0, parameters.find(","));
 	parameters.erase(0, parameters.find(",") + 1);
 
-	string paiment_number = parameters.substr(0, parameters.find(","));
+	std::string paiment_number = parameters.substr(0, parameters.find(","));
 	parameters.erase(0, parameters.find(",") + 1);
 
-	string paiment_methode = parameters.substr(0, parameters.find(","));
+	std::string paiment_methode = parameters.substr(0, parameters.find(","));
 	parameters.erase(0, parameters.find(",") + 1);
 
-	string comercial_marge = parameters.substr(0, parameters.find(","));
+	std::string comercial_marge = parameters.substr(0, parameters.find(","));
 	parameters.erase(0, parameters.find(",") + 1);
 
-	string comercial_reduction = parameters.substr(0, parameters.find(","));
+	std::string comercial_reduction = parameters.substr(0, parameters.find(","));
 	parameters.erase(0, parameters.find(",") + 1);
 
-	string tva = parameters.substr(0, parameters.find(","));
+	std::string tva = parameters.substr(0, parameters.find(","));
 	parameters.erase(0, parameters.find(",") + 1);
 
-	string id_client = parameters;
+	std::string id_client = parameters;
 	parameters.erase(0, parameters.find(",") + 1);
 
-	string items = parameters;
+	std::string items = parameters;
 
 	set_id_order(id_order);
 	set_facturation_date(facturation_date);
@@ -56,7 +56,7 @@ string order::create(string parameters) {
 }
 
 
-string order::modify(string parameters) {
+std::string order::modify(std::string parameters) {
 	// parameters: id_order,facturation_date,delivery_date,paiment_number,paiment_methode,comercial_marge,comercial_reduction,tva,id_client,items
 
 	int number_of_parameters = count(parameters.begin(), parameters.end(), ',') + 1;
@@ -64,34 +64,34 @@ string order::modify(string parameters) {
 		return "error:order:modify:wrong_number_of_parameters, expected 10 but got " + to_string(number_of_parameters);// il est chokbar
 	}
 
-	string id_order = parameters.substr(0, parameters.find(","));
+	std::string id_order = parameters.substr(0, parameters.find(","));
 	parameters.erase(0, parameters.find(",") + 1);
 
-	string facturation_date = parameters.substr(0, parameters.find(","));
+	std::string facturation_date = parameters.substr(0, parameters.find(","));
 	parameters.erase(0, parameters.find(",") + 1);
 
-	string delivery_date = parameters.substr(0, parameters.find(","));
+	std::string delivery_date = parameters.substr(0, parameters.find(","));
 	parameters.erase(0, parameters.find(",") + 1);
 
-	string paiment_number = parameters.substr(0, parameters.find(","));
+	std::string paiment_number = parameters.substr(0, parameters.find(","));
 	parameters.erase(0, parameters.find(",") + 1);
 
-	string paiment_methode = parameters.substr(0, parameters.find(","));
+	std::string paiment_methode = parameters.substr(0, parameters.find(","));
 	parameters.erase(0, parameters.find(",") + 1);
 
-	string comercial_marge = parameters.substr(0, parameters.find(","));
+	std::string comercial_marge = parameters.substr(0, parameters.find(","));
 	parameters.erase(0, parameters.find(",") + 1);
 
-	string comercial_reduction = parameters.substr(0, parameters.find(","));
+	std::string comercial_reduction = parameters.substr(0, parameters.find(","));
 	parameters.erase(0, parameters.find(",") + 1);
 
-	string tva = parameters.substr(0, parameters.find(","));
+	std::string tva = parameters.substr(0, parameters.find(","));
 	parameters.erase(0, parameters.find(",") + 1);
 
-	string id_client = parameters.substr(0, parameters.find(","));
+	std::string id_client = parameters.substr(0, parameters.find(","));
 	parameters.erase(0, parameters.find(",") + 1);
 
-	string items = parameters;
+	std::string items = parameters;
 
 	set_id_order(id_order);
 	set_facturation_date(facturation_date);
@@ -110,7 +110,7 @@ string order::modify(string parameters) {
 }
 
 
-string order::delete_(string parameters) {
+std::string order::delete_(std::string parameters) {
 	// parameters: id_order
 
 	// check if paramter is an integer
@@ -120,8 +120,8 @@ string order::delete_(string parameters) {
 		}
 	}
 
-	string request = "DELETE FROM [dbo].[FACTURE] WHERE FAC_ID_FACTURE = '" + parameters + "';";
-	string response = link::execute(request);
+	std::string request = "DELETE FROM [dbo].[FACTURE] WHERE FAC_ID_FACTURE = '" + parameters + "';";
+	std::string response = link::execute(request);
 
 
 	if (response == "ok") {
@@ -133,10 +133,10 @@ string order::delete_(string parameters) {
 }
 
 
-string order::show(string parameters) {
+std::string order::show(std::string parameters) {
 	// parameters: id_order OR id_client OR own
 
-	string request, response;
+	std::string request, response;
 
 	if (parameters == "own") {
 		response = "\n";

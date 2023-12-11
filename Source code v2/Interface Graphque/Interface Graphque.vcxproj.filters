@@ -21,9 +21,6 @@
     <ClCompile Include="Main.cpp">
       <Filter>Fichiers sources</Filter>
     </ClCompile>
-    <ClCompile Include="user.cpp">
-      <Filter>Fichiers sources</Filter>
-    </ClCompile>
     <ClCompile Include="Stock.cpp">
       <Filter>Fichiers sources</Filter>
     </ClCompile>
@@ -46,9 +43,6 @@
   <ItemGroup>
     <ClInclude Include="MyForm.h">
       <Filter>Fichiers de ressources</Filter>
-    </ClInclude>
-    <ClInclude Include="user.h">
-      <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
     <ClInclude Include="Stock.h">
       <Filter>Fichiers d%27en-tête</Filter>

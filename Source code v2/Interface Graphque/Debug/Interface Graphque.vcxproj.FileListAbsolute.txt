@@ -2,3 +2,7 @@ C:\Users\mibif\source\repos\Interface Graphque\Debug\InterfaceGraphque.MyForm.re
 C:\Users\mibif\source\repos\Interface Graphque\Debug\Interface Graphque.vcxproj.GenerateResource.cache
 C:\Users\mibif\source\repos\Interface Graphque\Debug\InterfaceG.exe
 C:\Users\mibif\source\repos\Interface Graphque\Debug\Interface Graphque.vcxproj.AssemblyReference.cache
+C:\Users\mibif\Documents\GitHub\Projet-poo\Source code v2\Interface Graphque\Debug\Interface Graphque.vcxproj.AssemblyReference.cache
+C:\Users\mibif\Documents\GitHub\Projet-poo\Source code v2\Interface Graphque\Debug\InterfaceGraphque.MyForm.resources
+C:\Users\mibif\Documents\GitHub\Projet-poo\Source code v2\Interface Graphque\Debug\Interface Graphque.vcxproj.GenerateResource.cache
+C:\Users\mibif\Documents\GitHub\Projet-poo\Source code v2\Interface Graphque\Debug\InterfaceG.exe
