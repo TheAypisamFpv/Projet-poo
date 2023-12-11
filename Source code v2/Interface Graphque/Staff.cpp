@@ -4,6 +4,8 @@
 string staff::create(string parameters) {
 	// name,surname,phone,hiring_date,job,address,id_superior
 
+
+
 	int number_of_parameters = count(parameters.begin(), parameters.end(), ',') + 1;
 	if (number_of_parameters != 7) {
 		return "error:staff:create:wrong_number_of_parameters, expected 7 but got " + to_string(number_of_parameters);// il est chokbar
@@ -108,8 +110,7 @@ string staff::delete_(string parameters) {
 	}
 
 	string request = "DELETE FROM staff WHERE id_staff = '" + parameters + "';";
-	string response = link::execute(request);
-
+	string response = link::get_first_item(link::execute(request));
 
 	if (response == "ok") {
 		return "staff:deleted";
@@ -130,7 +131,7 @@ string staff::show(string parameters) {
 	else {
 		// SQL request to show a staff
 		string request = "SELECT * FROM staff WHERE name = '" + parameters.substr(0, parameters.find(":")) + "' AND surname = '" + parameters.substr(parameters.find(":") + 1) + "';";
-		response = link::execute(request);
+		response = link::get_first_item(link::execute(request));
 	}
 	return response;
 }

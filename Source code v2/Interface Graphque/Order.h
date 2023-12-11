@@ -77,13 +77,13 @@ public:
 			// items is stored as a string with the format "item1-quantity1\nitem2-quantity2\nitem3-quantity3\n..."
 			string id_adresse, price, item_name, quantity, id_item, id_achat;
 			// get the id_adresse
-			request = "SELECT ADR_ID_ADRESSE FROM ADRESSE WHERE COMCLI_ID_COMPTE = " + this->id_client;
-			id_adresse = link::execute(request);
+			request = "SELECT top 1 ADR_ID_ADRESSE FROM ADRESSE WHERE COMCLI_ID_COMPTE = (SELECT COMCLI_ID_COMPTE FROM compte_client WHERE COMCLI_NUMERO_COMPTE = '" + this->id_client + "');";
+			id_adresse = link::get_first_item(link::execute(request));
 
 			// get the last id from the table ACHAT
 			request = "SELECT TOP 1 ACH_ID_ACHAT FROM ACHAT;";
 			// increment the id
-			id_achat = to_string(stoi(link::execute(request)) + 1);
+			id_achat = to_string(stoi(link::get_first_item(link::execute(request))) + 1);
 
 			// get the price
 			// for loop to get the price
@@ -99,11 +99,11 @@ public:
 
 				// get the price
 				request = "SELECT PRO_PRIX FROM PRODUIT WHERE PRO_NOM_PRODUIT LIKE '" + item_name + "'";
-				price = link::execute(request);
+				price = link::get_first_item(link::execute(request));
 
 				// get the item id
 				request = "SELECT PRO_ID_PRODUIT FROM PRODUIT WHERE PRO_NOM_PRODUIT LIKE '" + item_name + "'";
-				id_item = link::execute(request);
+				id_item = link::get_first_item(link::execute(request));
 
 				// add the item to the table ACHAT
 				request = "INSERT INTO [dbo].[ACHAT] ([ACH_ID_ACHAT], [ACH_QUANTITE], [PRO_ID_PRODUIT]) VALUES ('" + id_achat + "', '" + quantity + "', '" + id_item + "');";
@@ -121,19 +121,19 @@ public:
 			// facture name is the 2 first letters of the client surname, the 2 first letters of the client name , the year of the order, the first 3 letters of the city, and an incremental number
 			string facture_name = this->id_client.substr(0, 2) + this->id_client.substr(this->id_client.find(" ", 0) + 1, 2) + this->facturation_date.substr(6, 4) + id_adresse.substr(0, 3);
 			// get the last order id
-			request = "SELECT TOP 1 FAC_ID_FACTURE FROM FACTURE;";
-			string last_id = link::execute(request);
+			request = "SELECT TOP 1 FAC_ID_FACTURE FROM FACTURE ORDER BY FAC_ID_FACTURE DESC;";
+			string last_id = link::get_first_item(link::execute(request));
 			// increment the id
 			last_id = to_string(stoi(last_id) + 1);
 			this->id_order = last_id;
 
 			// create the order
 			request = "INSERT INTO [dbo].[FACTURE] ([FAC_NOM_FACTURE], [FAC_DATE_FACTURATION], [FAC_DATE_COMMANDE], [FAC_DATE_LIVRAISON], [FAC_MOYEN_PAIEMENT], [FAC_PRIX], [FAC_MARGE], [FAC_REMISE], [FAC_TVA], [FAC_PRIX_TTC], [ADR_ID_ADRESSE], [COMCLI_ID_COMPTE]) VALUES ('" + facture_name + "', '" + this->facturation_date + "', '" + this->facturation_date + "', '" + this->eta_date + "', '" + this->paiment_methode + "', '" + price + "', '" + this->comercial_marge + "', '" + this->comercial_reduction + "', '" + this->tva + "', '" + this->price + "', '" + id_adresse + "', '" + this->id_client + "')";
-			response = link::execute(request);
+			response = link::get_first_item(link::execute(request));
 
 			// add the id of the order in the table COMMANDE
 			request = "INSERT INTO [dbo].[COMMANDE] ([FAC_ID_FACTURE], [ACH_ID_ACHAT], [MAG_ID_MAGASIN]) VALUES ('" + this->id_order + "', '" + id_achat + "', '1');";
-			response += "\n" + link::execute(request);
+			response += "\n" + link::get_first_item(link::execute(request));
 		}
 		else {
 			// update the order
@@ -156,7 +156,7 @@ public:
 			request = request.substr(0, request.size() - 2);
 			// add the where clause
 			request += " WHERE [FAC_ID_FACTURE] = '" + this->id_order + "';";
-			response = link::execute(request);
+			response = link::get_first_item(link::execute(request));
 		}
 		return response;
 	};

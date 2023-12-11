@@ -4,6 +4,12 @@
 string client::create(string parameter) {
 	// name,surname,mail,phone,address,birth_date
 
+	// chekc if there is the right number of parameters
+	int number_of_parameters = count(parameter.begin(), parameter.end(), ',') + 1;
+	if (number_of_parameters != 6) {
+		return "error:client:create:wrong_number_of_parameters, expected 6 but got " + to_string(number_of_parameters);// il est chokbar
+	}
+
 	// SQL request
 	string name = parameter.substr(0, parameter.find(","));
 	parameter.erase(0, parameter.find(",") + 1);
@@ -63,7 +69,6 @@ string client::modify(string parameter) {
 
 	// check if there is the right number of parameters
 	int number_of_parameters = count(parameter.begin(), parameter.end(), ',') + 1;
-
 	if (number_of_parameters != 7) {
 		return "error:client:modify:wrong_number_of_parameters, expected 7 but got " + to_string(number_of_parameters);// il est chokbar
 	}
@@ -138,20 +143,20 @@ string client::delete_(string parameters) {
 
 		// SQL request to delete a client
 		request = "DELETE FROM COMPTE_CLIENT WHERE COMCLI_NUMERO_COMPTE = '" + parameters + "';";
-		response = link::execute(request);
+		response = link::get_first_item(link::execute(request));
 	}
 	// else, there are two parameters, so it is the name and surname
 	else if (number_of_parameters == 2) {
 		// SQL request to check if there is only one client with this name and surname
 		request = "SELECT * FROM COMPTE_CLIENT WHERE COMCLI_NOM = '" + parameters.substr(0, parameters.find(",")) + "' AND COMCLI_PRENOM = '" + parameters.substr(parameters.find(",") + 1, parameters.length()) + "';";
-		response = link::execute(request);
+		response = link::get_first_item(link::execute(request));
 		// response is direct from database
 
 		// if there is only one client with this name and surname, delete it
 		if (response != "error:link:execute:empty") {
 			// SQL request to delete a client
 			request = "DELETE FROM COMPTE_CLIENT WHERE COMCLI_NOM = '" + parameters.substr(0, parameters.find(",")) + "' AND COMCLI_PRENOM = '" + parameters.substr(parameters.find(",") + 1, parameters.length()) + "';";
-			response = link::execute(request);
+			response = link::get_first_item(link::execute(request));
 		}
 
 	}
@@ -185,7 +190,7 @@ string client::show(string parameters) {
 
 	// SQL request to show a client
 	string request = "SELECT * FROM COMPTE_CLIENT WHERE COMCLI_NUMERO_COMPTE = '" + parameters + "';";
-	response = link::execute(request);
+	response = link::get_first_item(link::execute(request));
 
 	return response;
 }

@@ -1,6 +1,7 @@
 #pragma once
 #include <string>
 #include <iostream>
+#include <msclr\marshal_cppstd.h>
 
 // SQL command possible:
 // CLients: create, modify, delete, show
@@ -23,6 +24,6 @@ public:
 	string modify(string parameters) {};
 	string delete_(string parameters) {};
 	string show(string parameters) {};
-
-	string execute(string request);
+	System::Data::DataSet^ execute(string request);
+	string get_first_item(System::Data::DataSet^ data);
 };
