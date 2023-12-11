@@ -28,9 +28,8 @@ Apres avoir ouvert l'application, vous pouvez selectionner le fait de faire un c
 
 
 
-​Dans la selection Table, vous pouvez selection sur quoi faire une action, `Personnel`, `Client`, `Commande`, `Stock`.
+​Dans la selection Table, vous pouvez selection sur quoi faire une action (`Personnel`, `Client`, `Commande`, `Stock`).
 
-  
 </p>
 <p align="center"> 
   <a href="" rel="noopener">
@@ -41,8 +40,7 @@ Apres avoir ouvert l'application, vous pouvez selectionner le fait de faire un c
 
 
 
-​Vous pouvez ensuite selectionner l'action a faire (`créer`, `modifier`, `supprimer`).
-
+​Puis selectionner l'action a faire (`créer`, `modifier`, `supprimer`).
 
 </p>
 <p align="center"> 
