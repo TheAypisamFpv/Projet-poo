@@ -1,4 +1,4 @@
-<h3 align="center">Projet Poo (CESINFO)</h3>
+<h2 align="center">Projet Poo (CESINFO)</h2>
 
 ---
 
