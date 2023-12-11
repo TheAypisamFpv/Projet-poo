@@ -57,7 +57,7 @@ public:
 			// get the id of the post
 			// create the staff
 
-			request = "INSERT INTO [dbo].[PERSONNEL] ([PER_NOM], [PER_PRENOM], [PER_TELEPHONE], [PER_DATE_EMBAUCHE], [PER_ID_SUPERIEUR], [POS_ID_POSTE]) VALUES ('" + name + "', '" + surname + "', '" + phone + "', '" + hiring_date + "', '" + id_superior + "', '(SELECT[POS_ID_POSTE] FROM[dbo].[POSTE] WHERE POS_POSTE LIKE '" + job + "')');";
+			request = "INSERT INTO [dbo].[PERSONNEL] ([PER_NOM], [PER_PRENOM], [PER_TELEPHONE], [PER_DATE_EMBAUCHE], [PER_ID_SUPERIEUR], [POS_ID_POSTE]) VALUES ('" + name + "', '" + surname + "', '" + phone + "', '" + hiring_date + "', '" + id_superior + "', (SELECT[POS_ID_POSTE] FROM[dbo].[POSTE] WHERE POS_POSTE LIKE '" + job + "'));";
 			link::set(request);
 		}
 		else {
@@ -70,6 +70,7 @@ public:
 			if (!hiring_date.empty()) { request += "[PER_DATE_EMBAUCHE] = '" + hiring_date + "', "; }
 			if (!id_superior.empty()) { request += "[PER_ID_SUPERIEUR] = '" + id_superior + "', "; }
 			if (!job.empty()) {
+				request = request.substr(0, request.size() - 1);
 				// get the id of the post
 				request += "[POS_ID_POSTE] = (SELECT [POS_ID_POSTE] FROM [dbo].[POSTE] WHERE POS_POSTE LIKE '" + job + "'), ";
 			}

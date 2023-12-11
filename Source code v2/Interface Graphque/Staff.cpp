@@ -12,23 +12,36 @@ void staff::create(string parameters) {
 	}
 
 	// SQL request to create a new staff
-	string name = parameters.substr(0, parameters.find(":"));
-	parameters.erase(0, parameters.find(":") + 1);
+	string name = parameters.substr(0, parameters.find(","));
+	parameters.erase(0, parameters.find(",") + 1);
 
-	string surname = parameters.substr(0, parameters.find(":"));
-	parameters.erase(0, parameters.find(":") + 1);
+	string surname = parameters.substr(0, parameters.find(","));
+	parameters.erase(0, parameters.find(",") + 1);
 
-	string phone = parameters.substr(0, parameters.find(":"));
-	parameters.erase(0, parameters.find(":") + 1);
+	string phone = parameters.substr(0, parameters.find(","));
+	parameters.erase(0, parameters.find(",") + 1);
 
-	string hiring_date = parameters.substr(0, parameters.find(":"));
-	parameters.erase(0, parameters.find(":") + 1);
+	string hiring_date = parameters.substr(0, parameters.find(","));
+	parameters.erase(0, parameters.find(",") + 1);
 
-	string job = parameters.substr(0, parameters.find(":"));
-	parameters.erase(0, parameters.find(":") + 1);
+	for (char& c : hiring_date) {
+		if (c == '/') {
+			c = '-'; // Remplacer '/' par '-'
+		}
+	}
 
-	string address = parameters.substr(0, parameters.find(":"));
-	parameters.erase(0, parameters.find(":") + 1);
+	hiring_date = "2023-10-09";
+
+
+
+
+	string job = parameters.substr(0, parameters.find(","));
+	parameters.erase(0, parameters.find(",") + 1);
+
+	job = "technicien";
+
+	string address = parameters.substr(0, parameters.find(","));
+	parameters.erase(0, parameters.find(",") + 1);
 
 	string id_superior = parameters;
 
@@ -56,26 +69,27 @@ void staff::modify(string parameters) {
 		return ;// il est chokbar
 	}
 
-	string id_staff = parameters.substr(0, parameters.find(":"));
-	parameters.erase(0, parameters.find(":") + 1);
+	string id_staff = parameters.substr(0, parameters.find(","));
+	parameters.erase(0, parameters.find(",") + 1);
 
-	string name = parameters.substr(0, parameters.find(":"));
-	parameters.erase(0, parameters.find(":") + 1);
+	string name = parameters.substr(0, parameters.find(","));
+	parameters.erase(0, parameters.find(",") + 1);
 
-	string surname = parameters.substr(0, parameters.find(":"));
-	parameters.erase(0, parameters.find(":") + 1);
+	string surname = parameters.substr(0, parameters.find(","));
+	parameters.erase(0, parameters.find(",") + 1);
 
-	string phone = parameters.substr(0, parameters.find(":"));
-	parameters.erase(0, parameters.find(":") + 1);
+	string phone = parameters.substr(0, parameters.find(","));
+	parameters.erase(0, parameters.find(",") + 1);
 
-	string hiring_date = parameters.substr(0, parameters.find(":"));
-	parameters.erase(0, parameters.find(":") + 1);
+	string hiring_date = parameters.substr(0, parameters.find(","));
+	parameters.erase(0, parameters.find(",") + 1);
+	
 
-	string job = parameters.substr(0, parameters.find(":"));
-	parameters.erase(0, parameters.find(":") + 1);
+	string job = parameters.substr(0, parameters.find(","));
+	parameters.erase(0, parameters.find(",") + 1);
 
-	string address = parameters.substr(0, parameters.find(":"));
-	parameters.erase(0, parameters.find(":") + 1);
+	string address = parameters.substr(0, parameters.find(","));
+	parameters.erase(0, parameters.find(",") + 1);
 
 	string id_superior = parameters;
 

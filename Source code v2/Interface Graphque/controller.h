@@ -8,7 +8,7 @@ using namespace std;
 
 class Controller {
 private:
-	string forbidden_characters = "*';\\\""; // list of forbidden characters
+	string forbidden_characters = "*';\""; // list of forbidden characters
 	string forbidden_words = "select,drop"; // list of forbidden words
 public:
 	Controller() {};
