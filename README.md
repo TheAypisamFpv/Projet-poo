@@ -10,3 +10,9 @@
 <p align="left"> Ce projet a pour but de creer une application de question d'entreprise avec connexion a une base de donnée. L'application permet de creer, modifier, supprimer et afficher un personel/client/commande/stock
     <br> 
 </p>
+
+---
+
+<p align="center"> Comment utiliser l'application
+    <br> 
+</p>
