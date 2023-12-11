@@ -15,7 +15,7 @@ Ce projet a pour but de créer une application de gestion d'entreprise avec conn
 
 
 
-Apres avoir ouvert l'application, vous pouvez selectionner le fait de faire un changement a une `table` ou faire des `statistiques`.
+Après avoir ouvert l'application, vous pouvez sélectionner le fait de faire un changement à une `table` ou faire des `statistiques`.
 </p>
 <p align="center"> 
   <a href="" rel="noopener">
@@ -25,7 +25,7 @@ Apres avoir ouvert l'application, vous pouvez selectionner le fait de faire un c
 
 
 # Table
-​Dans la selection Table, vous pouvez selection sur quoi faire une action (`Personnel`, `Client`, `Commande`, `Stock`).
+​​Dans la sélection Table, vous pouvez sélectionner sur quoi faire une action (`Personnel`, `Client`, `Commande`, `Stock`).
 </p>
 <p align="center"> 
   <a href="" rel="noopener">
@@ -35,7 +35,7 @@ Apres avoir ouvert l'application, vous pouvez selectionner le fait de faire un c
 
 
 ### Personnel
-​Puis selectionner l'action a faire (`créer`, `modifier`, `supprimer`).
+​Puis sélectionner l'action à faire (`créer`, `modifier`, `supprimer`).
 </p>
 <p align="center"> 
   <a href="" rel="noopener">
@@ -44,7 +44,7 @@ Apres avoir ouvert l'application, vous pouvez selectionner le fait de faire un c
 
 
 ### créer
-En selectionnant `créer`, les information neccesaire a la creation d'un Peronnel s'affichent.
+En sélectionnant `créer`, les informations nécessaires à la création d'un Personnel s'affichent.
 </p>
 <p align="center"> 
   <a href="" rel="noopener">
@@ -52,7 +52,7 @@ En selectionnant `créer`, les information neccesaire a la creation d'un Peronne
 </p>
 
 ### modifier
-En selectionnant `créer`, les information neccesaire a la modification d'un Peronnel s'affichent.
+En sélectionnant `modifier`, les informations nécessaires à la modification d'un Personnel s'affichent.
 </p>
 <p align="center"> 
   <a href="" rel="noopener">
@@ -60,7 +60,7 @@ En selectionnant `créer`, les information neccesaire a la modification d'un Per
 </p>
 
 ### supprimer
-En selectionnant `supprimer`, les information neccesaire a la suppression d'un Peronnel s'affichent.
+En sélectionnant `supprimer`, les informations nécessaires à la suppression d'un Personnel s'affichent.
 </p>
 <p align="center"> 
   <a href="" rel="noopener">
@@ -71,7 +71,7 @@ En selectionnant `supprimer`, les information neccesaire a la suppression d'un P
 
 
 # Stats
-Dans la selection de statistique, vous pouvez selection l'action a faire (`Calcul`,`Identification`,`Simulation`).
+Dans la sélection de statistique, vous pouvez sélectionner l'action à faire (`Calcul`,`Identification`,`Simulation`).
 </p>
 <p align="center"> 
   <a href="" rel="noopener">
@@ -80,7 +80,7 @@ Dans la selection de statistique, vous pouvez selection l'action a faire (`Calcu
 
 
 ## Calcul
-Dans la selection de `Calcul`, vous pouvez selection l'action a faire (`panier moyen`,`Chiffre d'affaire`,`achat client`,`valeur commercial stock`,`valeur achat stock`).
+Dans la sélection de `Calcul`, vous pouvez sélectionner l'action à faire (`panier moyen`,`Chiffre d'affaire`,`achat client`,`valeur commercial stock`,`valeur achat stock`).
 </p>
 <p align="center"> 
   <a href="" rel="noopener">
@@ -89,7 +89,7 @@ Dans la selection de `Calcul`, vous pouvez selection l'action a faire (`panier m
 
 
 ## Identification
-Dans la selection de `Identification`, vous pouvez selection l'action a faire (`produit a reaprovisionner`,`produit plus vendu`,`produit moins vendu`).
+Dans la sélection de `Identification`, vous pouvez sélectionner l'action à faire (`produit a reaprovisionner`,`produit plus vendu`,`produit moins vendu`).
 </p>
 <p align="center"> 
   <a href="" rel="noopener">
@@ -98,7 +98,7 @@ Dans la selection de `Identification`, vous pouvez selection l'action a faire (`
 
 
 ## Simulation
-Dans la selection de `Simulation`, vous pouvez entrez les information pour faire une simulation.
+Dans la sélection de `Simulation`, vous pouvez entrer les informations pour faire une simulation.
 </p>
 <p align="center"> 
   <a href="" rel="noopener">
