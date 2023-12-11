@@ -112,7 +112,11 @@ Dans la sélection de `Simulation`, vous pouvez entrer les informations pour fai
 
 # Test Unitaire
 Ce test Unitaire test les fonction `create`, `modify`, `delete`, `show` d'un client et `convert_date`
-* `convert_date` permet de convertire une date en `dd/mm/yyyy` en `yyyy-mm-dd` pour être accepter dans une requête SQL.
+* `show` : Permet de récuperer des information pour les afficher, est appeler et testé pour chacun des tests ci-dessous.
+* `create` : Créer un Client exemple et vérifie qu'il soit bien créé dans la base de données.
+* `modify` : Modifie un Client exemple et vérifie qu'il soit bien modifié dans la base de données.
+* `delete` : Supprime un Client exemple et vérifie qu'il soit bien supprimé dans la base de données.
+* `convert_date` : Permet de convertir une date en `dd/mm/yyyy` en `yyyy-mm-dd` pour être accepter dans une requête SQL.
 </p>
 <p align="center"> 
   <a href="" rel="noopener">
