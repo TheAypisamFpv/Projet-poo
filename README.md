@@ -11,13 +11,11 @@ Ce projet a pour but de créer une application de gestion d'entreprise avec conn
 
 ---
 
-<h2 align="center"> Comment utiliser l'application</h2>
+<h2 align="center"> Utilisation de l'application </h2>
 
 
 
 Apres avoir ouvert l'application, vous pouvez selectionner le fait de faire un changement a une `table` ou faire des `statistiques`.
-
-  
 </p>
 <p align="center"> 
   <a href="" rel="noopener">
@@ -26,10 +24,8 @@ Apres avoir ouvert l'application, vous pouvez selectionner le fait de faire un c
 
 
 
-
-
+## Table
 ​Dans la selection Table, vous pouvez selection sur quoi faire une action (`Personnel`, `Client`, `Commande`, `Stock`).
-
 </p>
 <p align="center"> 
   <a href="" rel="noopener">
@@ -38,10 +34,8 @@ Apres avoir ouvert l'application, vous pouvez selectionner le fait de faire un c
 
 
 
-
-
+## Personnel
 ​Puis selectionner l'action a faire (`créer`, `modifier`, `supprimer`).
-
 </p>
 <p align="center"> 
   <a href="" rel="noopener">
@@ -49,5 +43,10 @@ Apres avoir ouvert l'application, vous pouvez selectionner le fait de faire un c
 </p>
 
 
-
-
+## créer
+En selectionnant `créer`, les information neccesaire a la creation d'un Peronnel s'affichent
+</p>
+<p align="center"> 
+  <a href="" rel="noopener">
+ <img src="https://github.com/TheAypisamFpv/Projet-poo/blob/main/images/how_to_use/table_personnel_creer.png" alt="table_personnel_creer"></a>
+</p>
