@@ -9,7 +9,7 @@ int main()
 
 	int passed = 0;
 	int failed = 0;
-
+	System::Data::DataSet^ verif;
 
 	Controller controller;
 	std::cout << endl << "Test 1: create a client : ";
@@ -20,7 +20,7 @@ int main()
 	// check if the client is created by creating it, then checking if it exists
 
 	controller.Table(test_create_client);
-	System::Data::DataSet^ verif = controller.Table(test_show_client);
+	verif = controller.Table(test_show_client);
 	
 	if (verif->Tables[0]->Rows[0]->ItemArray[1]->ToString() == "name")
 	{
@@ -38,7 +38,7 @@ int main()
 	System::String^ test_modify_client = "client:modify:1:namemodify,surname,mail,phone,address,birth_date";
 
 	controller.Table(test_modify_client);
-	System::Data::DataSet^ verif = controller.Table(test_show_client);
+	verif = controller.Table(test_show_client);
 
 	if (verif->Tables[0]->Rows[0]->ItemArray[1]->ToString() == "namemodify")
 	{
@@ -56,7 +56,7 @@ int main()
 	System::String^ test_delete_client = "client:delete:1";
 
 	controller.Table(test_delete_client);
-	System::Data::DataSet^ verif = controller.Table(test_show_client);
+	verif = controller.Table(test_show_client);
 
 	if (verif->Tables[0]->Rows->Count == 0)
 	{

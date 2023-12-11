@@ -34,7 +34,7 @@ public:
 	System::Data::DataSet^ show(string parameters) {};
 	
 	System::Data::DataSet^ get(string request, string tablename);
-	void set(string request);
+	void set(std::string request);
 	
 	string get_first_item(System::Data::DataSet^ data);
 };
