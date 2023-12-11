@@ -131,7 +131,6 @@
     <ClCompile Include="Order.cpp" />
     <ClCompile Include="Staff.cpp" />
     <ClCompile Include="Stock.cpp" />
-    <ClCompile Include="user.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Client.h" />
@@ -143,7 +142,6 @@
     <ClInclude Include="PCH.h" />
     <ClInclude Include="Staff.h" />
     <ClInclude Include="Stock.h" />
-    <ClInclude Include="user.h" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="MyForm.resx">
