@@ -3,7 +3,7 @@
 
 NS_Comp_Data::CLcad::CLcad(void)
 {
-	this->sCnx = "Data Source=CAILLOUX\\MSSQL_CAILLOUX;User ID=projet;Password=123456789";
+	this->sCnx = "Data Source=CAILLOUX\\MSSQL_CAILLOUX;Initial Catalog=Projet;Persist Security Info=True;User ID=projet;Password=123456789";
 
 	this->sSQL = "Rien";
 
@@ -22,6 +22,8 @@ System::Data::DataSet^ NS_Comp_Data::CLcad::get(System::String^ sSQL, System::St
 	this->oCmd->CommandText = this->sSQL;
 	this->oDA->SelectCommand = this->oCmd;
 	this->oDA->Fill(this->oDS, sTable);
+
+	return this->oDS;
 }
 
 void NS_Comp_Data::CLcad::set(System::String^ sSql)

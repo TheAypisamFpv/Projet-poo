@@ -80,6 +80,7 @@ System::Data::DataSet^ Controller::Stats(System::String^ request_) {
 	// exemple : total_purchases:cailloux (get total purchases of user cailloux)
 
 	link sql;
+	System::Data::DataSet^ void_;
 
 	// convert System::String to std::string
 	string request = msclr::interop::marshal_as<std::string>(request_);
@@ -88,7 +89,7 @@ System::Data::DataSet^ Controller::Stats(System::String^ request_) {
 	// check if there is an attempt to do an SQL injection
 	string SQL_chokbar = SQL_check(request);
 	if (SQL_chokbar != "ok") {
-		return ""; // il est chokbar
+		return void_; // il est chokbar
 	}
 
 
@@ -100,7 +101,7 @@ System::Data::DataSet^ Controller::Stats(System::String^ request_) {
 	//check request by checking if there is 1 ':' (2 arguments)
 	int argument_number = count(request.begin(), request.end(), ':') + 1;
 	if (argument_number != 2) {
-		return ""; // il est chokbar
+		return void_; // il est chokbar
 	}
 
 	// panier moyen
@@ -112,7 +113,7 @@ System::Data::DataSet^ Controller::Stats(System::String^ request_) {
 		// check if parameters is an integer
 		for (int i = 0; i < request.substr(9).length(); i++) {
 			if (!isdigit(request.substr(9)[i])) {
-				return ""; // il est chokbar
+				return void_; // il est chokbar
 			}
 		}
 		result = sql.get("SELECT SUM(FAC_PRIX) AS ChiffreAffaire FROM FACTURE WHERE MONTH(FAC_DATE_FACTURE) = " + request.substr(9), "FACTURE");
