@@ -106,7 +106,7 @@ void staff::delete_(string parameters) {
 		}
 	}
 
-	string request = "DELETE FROM staff WHERE id_staff = '" + parameters + "';";
+	string request = "DELETE FROM PERSONNEL WHERE PER_ID_PERSONNEL = '" + parameters + "';";
 	link::set(request);
 }
 
@@ -114,6 +114,6 @@ void staff::delete_(string parameters) {
 System::Data::DataSet^ staff::show(string parameters) {
 	// name,surname
 	// SQL request to show a staff
-	string request = "SELECT * FROM staff WHERE LOWER(name) LIKE LOWER(%'" + parameters.substr(0, parameters.find(":")) + "'%) AND LOWER(surname) LIKE LOWER(%'" + parameters.substr(parameters.find(":") + 1) + "'%);";
+	string request = "SELECT * FROM PERSONNEL WHERE LOWER(name) LIKE LOWER(%'" + parameters.substr(0, parameters.find(":")) + "'%) AND LOWER(surname) LIKE LOWER(%'" + parameters.substr(parameters.find(":") + 1) + "'%);";
 	return link::get(request, "STAFF");
 }

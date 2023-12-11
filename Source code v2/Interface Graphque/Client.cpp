@@ -106,6 +106,8 @@ void client::modify(string parameter) {
 		return;
 	}
 
+	set_id_compte(id_client);
+
 	if (name != "") set_name(name);
 	else return ;// il est chokbar
 
