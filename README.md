@@ -1,4 +1,4 @@
-<h2 align="center">Projet Poo (CESINFO)</h2>
+<h1 align="center">Projet Poo (CESINFO)</h1>
 
 ---
 
@@ -13,6 +13,4 @@
 
 ---
 
-<p align="center"> Comment utiliser l'application
-    <br> 
-</p>
+<h2 align="center"> Comment utiliser l'application</h2>
